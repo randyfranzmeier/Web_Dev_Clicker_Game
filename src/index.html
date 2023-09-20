@@ -1,0 +1,68 @@
+<!-- This page renders all the elements to one page, and 
+     loads all the .js files -->
+<DOCTYPE! html>
+<html lang="en" onload="gameLoaded()">
+
+<head>
+    <meta charset="utf-8">
+    <title>Jello Clicker</title>
+    <link href="styles/page.css" rel="stylesheet">
+    <link href="styles/store.css" rel="stylesheet">
+    <link href="styles/achievements.css" rel="stylesheet">
+    <link href="styles/rules.css" rel="stylesheet">
+</head>
+
+<body class="container">
+    <div class="navContainer">
+        <nav><h1>Jello Clicker</h1></nav>
+    </div>
+
+ <div class="container1">
+    <div class="rules">
+        <ul>
+            <li>Rules here</li>
+        </ul>
+    </div>
+
+    <div class="jelloListener">
+        <h1 id="points">POINTS: 0 </h1> 
+        <!-- grass background? -->
+        <img id="jello" src="images/jello.png" onclick="handleClick()">
+    </div>
+
+    <div class="achievements">
+        <h1>Goals to accomplish</h1> <br>
+        <ul>
+            <li><p id="goal1">Reach 1,000 points!</p></li>
+            <li><p id="goal2">Purchase 4 items from the jello store</p></li>
+            <li><p id="goal3">Click the jello 200 times</p></li>
+            <li><p id="goal4">Reach 10,000 points</p></li>
+            <li><p id="goal5">Clean the jello store out!</p></li>
+            <li><p id="goal6">Reach 50,000 points!</p></li>
+        </ul>
+    </div>
+</div>
+
+    <div class="store">
+        <h1>Jello Store!</h1>
+        <ul>
+            <li><p>description</p><button>cost</button></li>
+            <li><p>description</p><button>cost</button></li>
+            <li><p>description</p><button>cost</button></li>
+            <li><p>description</p><button>cost</button></li>
+            <li><p>description</p><button>cost</button></li>
+            <li><p>description</p><button>cost</button></li>
+            <li><p>description</p><button>cost</button></li>
+            <li><p>description</p><button>cost</button></li>
+        </ul>
+    </div>
+
+
+    <script src="game.js"></script>
+</div>
+</body>
+
+
+
+
+</html>

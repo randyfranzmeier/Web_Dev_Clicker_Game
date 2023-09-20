@@ -1,0 +1,54 @@
+/*This file deals with styles for the whole page
+Author: Randy Franzmeier
+Date: 9/17/23 */
+html{
+    background-color: black;
+    /* background-image:url(images/lightWall.jpg);
+    background-size: cover;
+    background-repeat: no-repeat; */
+}
+p, body {
+    color:white;
+}
+nav h1 {
+    color: white;
+    background-color: crimson;
+    margin-top: -0.75%;
+    margin-left: -3%;
+    margin-right: -3%;
+}
+ /* nav h1, #points {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+} */
+
+#points {
+    margin-top: 10%;
+}
+
+#jello {
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 25%;
+    height: 25%;
+}
+
+.jelloListener {
+    flex: 2 2 auto;
+}
+
+
+ul  {
+    list-style-type: none;
+}
+
+.container {
+    display:flex;
+    /* flex-direction: column;
+    flex-basis: auto; */
+}
+
+
+
