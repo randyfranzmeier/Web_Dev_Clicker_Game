@@ -2,10 +2,17 @@
 
 //declare boolean variables for power ups
 
-    let displayPoints = document.getElementById("points");
+    let displayPoints = document.getElementById('points');
      points =  0;
-
      clicks = 0;
+     let perk1 = document.getElementById('perk1')
+
+
+
+
+
+
+     
 
     let handleClick = () =>{
          clicks++;
@@ -14,9 +21,14 @@
 
      }
 
-     let generateCookies = () => {
-
+     let generateCookies = (num) => {
+        while(true) {
+            setTimeout(()=>{
+                setPoints(getPoints() + num);
+            }, 1000); //add specified number of points each second
+        }
      }
+
 
      let bonusScrollPoints = () => {
         let bonus = 5;
@@ -49,6 +61,7 @@
         //------------------------------Store------------------------------------------
         //store contains functions pertaining to the store section of the page
         let store = {
+           // addEventListener()
             purchaseItem (num) {
                 //switch statement, each number correlates to button pressed?
                 

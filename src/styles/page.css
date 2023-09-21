@@ -31,12 +31,14 @@ nav h1 {
     display:block;
     margin-left: auto;
     margin-right: auto;
-    width: 25%;
-    height: 25%;
+    width: 35%;
+    height: 35%;
 }
 
 .jelloListener {
     flex: 2 2 auto;
+    justify-content: center;
+    align-items: center;
 }
 
 
@@ -46,10 +48,18 @@ ul  {
 
 .container {
     display:flex;
-    flex-direction: column;
+    /* flex-direction: row;
     flex-wrap: nowrap;
+    justify-content: space-around; */
     /* flex-direction: column;
     flex-basis: auto; */
+}
+
+.container1 {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    display: flex;
+    justify-content: space-around;
 }
 
 
