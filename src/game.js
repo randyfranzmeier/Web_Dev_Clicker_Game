@@ -3,15 +3,33 @@
 //declare boolean variables for power ups
 
     let displayPoints = document.getElementById("points");
-     points = 0;
+     points =  0;
+
      clicks = 0;
 
     let handleClick = () =>{
          clicks++;
-         setPoints(points + 1);
+         setPoints(getPoints() + 1);
          displayUserPoints();
 
      }
+
+     let generateCookies = () => {
+
+     }
+
+     let bonusScrollPoints = () => {
+        let bonus = 5;
+        setPoints(bonus + getPoints());
+        displayUserPoints();
+     }
+
+     let penalty = () => {
+        getPoints() < 50? setPoints(0): setPoints(getPoints() - 50);
+        alert("Don't steal the jello!!! Penalty applied!!!");
+        displayUserPoints();
+     }
+
 
      
      let getPoints = () =>{
@@ -23,7 +41,7 @@
         }
         
         let displayUserPoints = () => {
-            displayPoints.innerHTML = "POINTS: " + getPoints();
+            displayPoints.innerHTML = "JPOINTS: " + getPoints();
             if(getPoints() >= 50000) {displayPoints.style.color = "gold";}
             else {displayPoints.style.color = "white";}
         }

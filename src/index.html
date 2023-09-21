@@ -19,15 +19,20 @@
 
  <div class="container1">
     <div class="rules">
+        <h1>Instructions and Rules:</h1>
         <ul>
-            <li>Rules here</li>
+            <li>- click the jello as many times as possible</li> <br>
+            <li>- Buy power-ups from the jello store to unlock perks</li> <br>
+            <li>- Discover hidden feature to gain extra points</li> <br>
+            <li>- unlock all achievements AND reach 50,000 JPoints to win</li>
+            </ul>
         </ul>
     </div>
 
     <div class="jelloListener">
-        <h1 id="points">POINTS: 0 </h1> 
+        <h1 id="points">JPOINTS: 0 </h1> 
         <!-- grass background? -->
-        <img id="jello" src="images/jello.png" onclick="handleClick()">
+        <img id="jello" src="images/jello.png" onclick="handleClick()" onmousewheel="bonusScrollPoints()" ondragend="penalty()">
     </div>
 
     <div class="achievements">
@@ -61,8 +66,4 @@
     <script src="game.js"></script>
 </div>
 </body>
-
-
-
-
 </html>
