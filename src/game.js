@@ -5,6 +5,7 @@
     let displayPoints = document.getElementById('points');
      points =  0;
      clicks = 0;
+     storeItems = 0;
      let perk1 = document.getElementById('perk1')
 
 
@@ -21,53 +22,70 @@
 
      }
 
-     let generateCookies = (num) => {
-        while(true) {
-            setTimeout(()=>{
-                setPoints(getPoints() + num);
-            }, 1000); //add specified number of points each second
-        }
-     }
-
-
-     let bonusScrollPoints = () => {
-        let bonus = 5;
-        setPoints(bonus + getPoints());
-        displayUserPoints();
-     }
-
-     let penalty = () => {
-        getPoints() < 50? setPoints(0): setPoints(getPoints() - 50);
-        alert("Don't steal the jello!!! Penalty applied!!!");
-        displayUserPoints();
-     }
-
-
      
-     let getPoints = () =>{
-         return points;
+     
+     let bonusScrollPoints = () => {
+         let bonus = 5;
+         setPoints(bonus + getPoints());
+         displayUserPoints();
+        }
+        
+        let penalty = () => {
+            getPoints() < 50? setPoints(0): setPoints(getPoints() - 50);
+            alert("Don't steal the jello!!! Penalty applied!!!");
+            displayUserPoints();
+        }
+        
+        
+        
+        let getPoints = () =>{
+            return points;
         }
         
         let setPoints = (points) =>{
             this.points = points;
         }
         
+        let getStoreItems = () => {
+            return storeItems;
+        }
+        
+        let setStoreITems = (storeItems) => {
+            this.storeItems = storeItems;
+        }
+        
         let displayUserPoints = () => {
             displayPoints.innerHTML = "JPOINTS: " + getPoints();
-            if(getPoints() >= 50000) {displayPoints.style.color = "gold";}
-            else {displayPoints.style.color = "white";}
+            getPoints() >= 50000? displayPoints.style.color = "gold": displayPoints.style.color = "white";
         }
-
+        
         //------------------------------Store------------------------------------------
         //store contains functions pertaining to the store section of the page
-        let store = {
-           // addEventListener()
-            purchaseItem (num) {
+        //let store = {
+            /*  CREATE EVENT LISTENER FOR EACH BUTTON, DEACTIVIATE UPON CLICK*/
+            let waitNumSeconds = (ms) => {
+               return new Promise(resolve => {
+                   setTimeout(resolve, ms);
+               });
+            }
+       
+             async function generateJPoints () {
+               while(true) {
+                   displayUserPoints();
+                   setPoints(getPoints() + 1);
+                   await waitNumSeconds(1000);
+               }
+            }
+            function purchaseItem () {
+                if(getPoints() >= 50) {
+                    setPoints(getPoints() - 50);
+                    generateJPoints();
+                }
                 //switch statement, each number correlates to button pressed?
                 
             }
 
-        }
+        //}
 
 
         //------------------------------Achievements------------------------------------
