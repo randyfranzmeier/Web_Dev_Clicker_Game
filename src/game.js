@@ -5,20 +5,26 @@
     let displayPoints = document.getElementById('points');
      points =  0;
      clicks = 0;
-     storeItems = 0;
-     let perk1 = document.getElementById('perk1')
+     let storeItemsLeft = 8;
+
+     let jello = document.getElementById('jello');
+    // let storeItems = new Array(8).fill(0);
+     let perk1 = document.getElementById('perk1');
 
 
 
+     //achievements
+     let goal1 = document.getElementById('goal1');
+     let goal2 = document.getElementById('goal2');
+     let goal3 = document.getElementById('goal3');
+     let goal4 = document.getElementById('goal4');
+     let goal5 = document.getElementById('goal5');
+     let goal6 = document.getElementById('goal6');
 
-
-
-    
     let handleClick = () =>{
          clicks++;
          setPoints(getPoints() + 1);
          displayUserPoints();
-
      }
 
      
@@ -44,18 +50,20 @@
         let setPoints = (points) =>{
             this.points = points;
         }
-        
-        let getStoreItems = () => {
-            return storeItems;
+
+        let getClicks = () =>{
+            return clicks;
         }
         
-        let setStoreITems = (storeItems) => {
-            this.storeItems = storeItems;
+        let setClicks = (clicks) =>{
+            this.clicks = clicks;
+            checkAchievements();
         }
+        
         
         let displayUserPoints = () => {
             displayPoints.innerHTML = "JPOINTS: " + getPoints();
-            getPoints() >= 50000? displayPoints.style.color = "gold": displayPoints.style.color = "white";
+            getPoints() >= 50000? displayPoints.style.color = "gold": displayPoints.style.color = "black";
         }
         
         //------------------------------Store------------------------------------------
@@ -89,9 +97,35 @@
 
         //------------------------------Achievements------------------------------------
         //achievements object to contain functions for achievements portion of page
-        let achievements = {
+        // let achievements = {
+            
+            let checkAchievements = () => { //set up event listener for points, only works when jello is clicked. onchange event?
+                
+              if(getPoints() >= 10){
+                goal1.style.color = "green";
+              }
+              if(storeItemsLeft === 4) {
+                goal2.style.color = "green";
+              }
+              if(getClicks() >= 200) {
+                goal3.style.color = "green";
+              }
+              if(getPoints() >= 100) {
+                goal4.style.color = "green";
+              }
+              if(storeItemsLeft === 0) {
+                goal5.style.color = "green";
+              }
+              if(getPoints() >= 500) {
+                goal6.style.color = "green";
+                jello.style.width = 0; //jello disappears
+                jello.style.height = 0;
+                displayPoints.innerHTML = "Congrats, You win!!!"; //display win message
+              }
 
-        }
+
+            }
+       // }
         
     
       

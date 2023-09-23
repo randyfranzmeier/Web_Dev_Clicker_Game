@@ -22,10 +22,10 @@
     <div class="rules">
         <h1>Game Concept:</h1>
         <ul>
-            <li>- click the jello as many times as possible</li> <br>
-            <li>- Buy power-ups from the jello store to unlock perks</li> <br>
-            <li>- Discover hidden feature to gain extra points</li> <br>
-            <li>- unlock all achievements AND reach 50,000 JPoints to win</li>
+            <li><h2>click the jello as many times as possible</h2></li> 
+            <li><h2>Buy power-ups from the jello store to unlock perks</h2></li> 
+            <li><h2>Discover hidden feature to gain extra points</h2></li> 
+            <li><h2>unlock all achievements AND reach 50,000 JPoints to win!</h2></li>
             </ul>
         </ul>
     </div>
@@ -37,29 +37,33 @@
     </div>
 
     <div class="achievements">
-        <h1>Goals to accomplish</h1> <br>
+        <h1>Goals to accomplish</h1> <br> <br>
         <ul>
-            <li><p id="goal1">Reach 1,000 points!</p></li>
-            <li><p id="goal2">Purchase 4 items from the jello store</p></li>
-            <li><p id="goal3">Click the jello 200 times</p></li>
-            <li><p id="goal4">Reach 10,000 points</p></li>
-            <li><p id="goal5">Clean the jello store out!</p></li>
-            <li><p id="goal6">Reach 50,000 points!</p></li>
+            <li><h2 id="goal1">Reach 1,000 points!</h2></li>
+            <li><h2 id="goal2">Purchase 4 items from the jello store</h2></li>
+            <li><h2 id="goal3">Click the jello 200 times</h2></li>
+            <li><h2 id="goal4">Reach 10,000 points</h2></li>
+            <li><h2 id="goal5">Clean the jello store out!</h2></li>
+            <li><h2 id="goal6">Reach 50,000 points!</h2></li>
         </ul>
     </div>
 </div>
 
     <div class="store">
         <h1>Jello Store!</h1>
-        <ul>
-            <li><p>1 JPOINT per second</p><button id="perk1" onclick="purchaseItem()">50</button></li>
-            <li><p>Double clicking points</p><button id="perk2">200</button></li>
-            <li><p>5 JPOINT's per second</p><button id="perk3">1000</button></li>
-            <li><p>10 JPOINT's per second</p><button id="perk4">2500</button></li>
-            <li><p>Quad-clicker</p><button id="perk5">4000</button></li>
-            <li><p>25 JPOINT's per second</p><button id="perk6">6000</button></li>
-            <li><p>50 JPOINT's per second</p><button id="perk7">8000</button></li>
-            <li><p>Mega mouse (50 cps)</p><button id="perk8">12000</button></li>
+        <ul class="storeItemContainer">
+            <div class="store-first-half">
+            <li><h1>More Jello</h1><button id="perk1" onclick="purchaseItem()">50</button></li>
+            <li><h1>2x click's<h1><button id="perk2">200</button></li>
+            <li><h1>Jello party<h1><button id="perk3">1000</button></li>
+            <li><h1>Jello Blast<h1><button id="perk4">2500</button></li>
+            </div>
+            <div class="store-second-half">
+            <li><h1>4x click's</h1><button id="perk5">4000</button></li>
+            <li><h1>Whole-Lotta-Jello</h1><button id="perk6">6000</button></li>
+            <li><h1>Jello frenzy</h1><button id="perk7">8000</button></li>
+            <li><h1>Mega click's</h1><button id="perk8">12000</button></li>
+            </div>
         </ul>
     </div>
 

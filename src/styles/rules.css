@@ -1,8 +1,13 @@
 .rules {
     flex: 1 1 auto;
     color: black;
-    font-weight: bold;
-    border: 3px solid white;
     width: 23%;
     background-color: grey;
+   
+}
+
+.rules > h1, .rules > ul > li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

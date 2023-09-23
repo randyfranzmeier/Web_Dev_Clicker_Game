@@ -1,14 +1,17 @@
 div.achievements {
     width: 25%;
-    border: 3px solid white;
-    /* margin-left: 75%;
+    /* border: 3px solid white;
+    margin-left: 75%;
     margin-top: -20% */
 }
 
 .achievements {
     flex: 1 1 auto;
     background-color:grey;
-    /* display:inline-flex;
-    justify-content: right;/*right, flex-start
-    align-items:flex-start; */
+}
+
+.achievements > h1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
