@@ -13,8 +13,7 @@
 
 
 
-     
-
+    
     let handleClick = () =>{
          clicks++;
          setPoints(getPoints() + 1);
@@ -64,10 +63,10 @@
         //let store = {
             /*  CREATE EVENT LISTENER FOR EACH BUTTON, DEACTIVIATE UPON CLICK*/
             let waitNumSeconds = (ms) => {
-               return new Promise(resolve => {
-                   setTimeout(resolve, ms);
-               });
-            }
+                return new Promise(resolve => {
+                    setTimeout(resolve, ms);
+                });
+             }
        
              async function generateJPoints () {
                while(true) {

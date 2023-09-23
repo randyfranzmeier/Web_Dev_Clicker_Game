@@ -1,7 +1,8 @@
 .rules {
     flex: 1 1 auto;
-    color: white;
+    color: black;
     font-weight: bold;
     border: 3px solid white;
     width: 23%;
+    background-color: grey;
 }

@@ -7,6 +7,7 @@ div.achievements {
 
 .achievements {
     flex: 1 1 auto;
+    background-color:grey;
     /* display:inline-flex;
     justify-content: right;/*right, flex-start
     align-items:flex-start; */
