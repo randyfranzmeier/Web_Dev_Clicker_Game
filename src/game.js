@@ -2,14 +2,28 @@
 
 //declare boolean variables for power ups
 
-    let displayPoints = document.getElementById('points');
-     points =  0;
-     clicks = 0;
-     let storeItemsLeft = 8;
 
-     let jello = document.getElementById('jello');
-    // let storeItems = new Array(8).fill(0);
+const gameObject = {
+        displayPoints: document.getElementById('points'),
+        points: 0, //these are all game properties
+        clicks: 0,
+        storeItemsLeft: 8,
+        jello: document.getElementById('jello'),
+
+        //object function to decrease store items by 1
+        decrementStoreItems(){
+            this.storeItemsLeft--;
+        }
+    }
+
      let perk1 = document.getElementById('perk1');
+     let perk2 = document.getElementById('perk2');
+     let perk3 = document.getElementById('perk3');
+     let perk4 = document.getElementById('perk4');
+     let perk5 = document.getElementById('perk5');
+     let perk6 = document.getElementById('perk6');
+     let perk7 = document.getElementById('perk7');
+     let perk8 = document.getElementById('perk8');
 
 
 
@@ -22,75 +36,78 @@
      let goal6 = document.getElementById('goal6');
 
     let handleClick = () =>{
-         clicks++;
-         setPoints(getPoints() + 1);
+         gameObject.clicks++;
+         gameObject.points++;
          displayUserPoints();
+         checkAchievements();
      }
 
      
      
      let bonusScrollPoints = () => {
-         let bonus = 5;
-         setPoints(bonus + getPoints());
+         gameObject.points += 5;
          displayUserPoints();
         }
         
         let penalty = () => {
-            getPoints() < 50? setPoints(0): setPoints(getPoints() - 50);
+            gameObject.points < 50? gameObject.points = 0: gameObject.points -= 50;
             alert("Don't steal the jello!!! Penalty applied!!!");
             displayUserPoints();
         }
         
         
         
-        let getPoints = () =>{
-            return points;
-        }
-        
-        let setPoints = (points) =>{
-            this.points = points;
-        }
-
-        let getClicks = () =>{
-            return clicks;
-        }
-        
-        let setClicks = (clicks) =>{
-            this.clicks = clicks;
-            checkAchievements();
-        }
         
         
         let displayUserPoints = () => {
-            displayPoints.innerHTML = "JPOINTS: " + getPoints();
-            getPoints() >= 50000? displayPoints.style.color = "gold": displayPoints.style.color = "black";
+            gameObject.displayPoints.innerHTML = "JPOINTS: " + gameObject.points;
+            gameObject.points >= 50000? gameObject.displayPoints.style.color = "gold": gameObject.displayPoints.style.color = "black";
         }
         
         //------------------------------Store------------------------------------------
         //store contains functions pertaining to the store section of the page
         //let store = {
             /*  CREATE EVENT LISTENER FOR EACH BUTTON, DEACTIVIATE UPON CLICK*/
+            // perk1.addEventListener('click', e =>{
+            //     jelloStore(1, e);
+            // });
+
+            
+            
+            // jelloStore(num, e) {
+            //     switch(num) {
+            //         case 1: 
+            //         if(getPoints() >= 50) {
+            //             setPoints(getPoints() - 50);
+            //             generateJPoints(1);
+            //             storeItemsLeft--;
+            //         }
+            //         break;
+
+            //         default: 
+            //            console.log("default switch encountered");
+            //     }
+
+            //     e.target.removeEventListener('click', () =>{
+            //         jelloStore});
+            //     }
+                
+            
+
             let waitNumSeconds = (ms) => {
                 return new Promise(resolve => {
                     setTimeout(resolve, ms);
                 });
              }
        
-             async function generateJPoints () {
+             async function generateJPoints (num) {
                while(true) {
                    displayUserPoints();
-                   setPoints(getPoints() + 1);
+                   gameObject.points += num;
                    await waitNumSeconds(1000);
                }
             }
-            function purchaseItem () {
-                if(getPoints() >= 50) {
-                    setPoints(getPoints() - 50);
-                    generateJPoints();
-                }
-                //switch statement, each number correlates to button pressed?
-                
-            }
+
 
         //}
 
@@ -101,72 +118,28 @@
             
             let checkAchievements = () => { //set up event listener for points, only works when jello is clicked. onchange event?
                 
-              if(getPoints() >= 10){
+              if(gameObject.points >= 10){
                 goal1.style.color = "green";
               }
-              if(storeItemsLeft === 4) {
+              if(gameObject.storeItemsLeft === 4) {
                 goal2.style.color = "green";
               }
-              if(getClicks() >= 200) {
+              if(gameObject.clicks >= 200) {
                 goal3.style.color = "green";
               }
-              if(getPoints() >= 100) {
+              if(gameObject.points >= 100) {
                 goal4.style.color = "green";
               }
-              if(storeItemsLeft === 0) {
+              if(gameObject.storeItemsLeft === 0) {
                 goal5.style.color = "green";
               }
-              if(getPoints() >= 500) {
+              if(gameObject.points >= 500) {
                 goal6.style.color = "green";
-                jello.style.width = 0; //jello disappears
-                jello.style.height = 0;
-                displayPoints.innerHTML = "Congrats, You win!!!"; //display win message
+                gameObject.jello.style.width = 0; //jello disappears
+                gameObject.jello.style.height = 0;
+                gameObject.displayPoints.innerHTML = "Congrats, You win!!!"; //displays win message
               }
-
-
             }
        // }
         
-    
-      
-    
-    
-
-/*class driver { 
-    displayPoints = document.getElementById("points");
-    points = 0;
-
-
-    gameLoaded = () =>{
-        if (getPoints() > 0) {
-            alert("Are you sure you want to lose all your points?");
-        }
-    }
-
-    getPoints = () =>{
-        return points;
-    }
-
-    setPoints = (points) =>{
-        this.points = points;
-    }
-
-   displayUserPoints = () => {
-        displayPoints.innerHTML = "POINTS: + ${getPoits}";
-    }
-
-}
-class game {
-    displayPoints = document.getElementById("points");
-    constructor(points){this.points = points;}
-    
-    handleClick = () =>{
-        setPoints(points + 1);
-        displayUserPoints();
-    }
-    
-    
-    
-}
-*/
 
