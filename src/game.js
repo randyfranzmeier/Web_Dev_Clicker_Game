@@ -9,12 +9,21 @@ const gameObject = {
         isDoubleClick: false,
         isQuadClick: false,
         isMegaClick: false,
-
-        //object function to decrease store items by 1
-        decrementStoreItems(){
-            this.storeItemsLeft--;
-        }
+        keepAddingPoints: true
     }
+
+
+
+    let observer = new MutationObserver(() =>{
+        achievements.checkAchievements(); //pass function in object parameter to be called on element change
+    }
+    );
+
+    observer.observe(gameObject.displayPoints, { //specifying which element should be observed
+        childList: true,
+        subtree: false,
+        characterDataOldValue: true,    
+    });
 
     
     
@@ -41,7 +50,7 @@ const gameObject = {
 
         gameObject.clicks++;
         displayUserPoints();
-        checkAchievements();
+        //achievements.checkAchievements();
     }
     
     
@@ -77,6 +86,8 @@ const gameObject = {
             let perk6 = document.getElementById('perk6');
             let perk7 = document.getElementById('perk7');
             let perk8 = document.getElementById('perk8');
+            let displayItemCount = document.getElementById('itemCount');
+      
             /*  CREATE EVENT LISTENER FOR EACH BUTTON, DEACTIVIATE UPON CLICK*/
 
             perk1.addEventListener('click', () =>{
@@ -116,51 +127,82 @@ const gameObject = {
                         switch(num) {
                             case 1: 
                                if(gameObject.points >= 50) {
+                                  document.getElementById('item1').style.visibility = 'hidden';
                                   gameObject.points -= 50;
-                                  gameObject.storeItemsLeft--;
+                                  gameObject.storeItemsLeft -= 1;
                                   generateJPoints(1); //1 jp per second
                         }
                         break;
                             case 2:
+                                if(gameObject.points >= 200) {
+                                document.getElementById('item2').style.visibility = 'hidden';
                                 gameObject.isDoubleClick = true;
+                                gameObject.points -= 200;
+                                displayUserPoints();
+                                gameObject.storeItemsLeft -= 1;
+                                }
                         break;
                             case 3:
                                 if(gameObject.points >= 1000) {
+                                    document.getElementById('item3').style.visibility = 'hidden';
                                     gameObject.points -= 1000;
-                                    gameObject.storeItemsLeft--;
+                                    gameObject.storeItemsLeft -= 1;
                                     generateJPoints(4); //5 jp per second
                                 }
                         break;
                             case 4:
                                 if(gameObject.points >= 2500) {
+                                    document.getElementById('item4').style.visibility = 'hidden';
                                     gameObject.points -= 2500;
-                                    gameObject.storeItemsLeft--;
+                                    gameObject.storeItemsLeft -= 1;
                                     generateJPoints(5); //10 jp per second
                                 }
                         break
                             case 5:
+                                if(gameObject.points >= 4000) {
+                                document.getElementById('item5').style.visibility = 'hidden';
                                 gameObject.isQuadClick = true;
+                                gameObject.points -= 4000;
+                                displayUserPoints();
+                                gameObject.storeItemsLeft -= 1;
+                                }
                         break;
                             case 6:
                                 if(gameObject.points >= 6000) {
+                                    document.getElementById('item6').style.visibility = 'hidden';
                                     gameObject.points -=6000;
-                                    gameObject.storeItemsLeft--;
+                                    gameObject.storeItemsLeft -= 1;
                                     generateJPoints(15); //25 jp per second
                                 }
                         break;
                             case 7:
                                 if(gameObject.points >= 8000) {
+                                    document.getElementById('item7').style.visibility = 'hidden';
                                     gameObject.points -= 8000;
-                                    gameObject.storeItemsLeft--;
+                                    gameObject.storeItemsLeft -= 1;
                                     generateJPoints(60); //75 jp per second
                                 }
                         break
                             case 8:
-                                gameObject.isMegaClick = true;
+                                if(gameObject.points >= 12000) {
+                                    document.getElementById('item8').style.visibility = 'hidden';
+                                    gameObject.isMegaClick = true;
+                                    gameObject.points -= 12000;
+                                    displayUserPoints();
+                                    gameObject.storeItemsLeft -= 1;
+                                }
                         break;
 
                         default: 
                         console.log("default switch encountered");
+                }
+
+                if(gameObject.storeItemsLeft === 0) {
+                   displayItemCount.innerHTML = "Sold Out!!!";
+                   displayItemCount.style.color = "red";
+                }
+                else{
+                    displayItemCount.innerHTML = "Items left: " + gameObject.storeItemsLeft;
                 }
             
                 this.removeEventListener('click', () =>{
@@ -176,7 +218,7 @@ const gameObject = {
             }
             
             async function generateJPoints (num) {
-                while(true) {
+                while(gameObject.keepAddingPoints) {
                     displayUserPoints();
                     gameObject.points += num;
                     await waitNumSeconds(1000);
@@ -199,25 +241,27 @@ const gameObject = {
         
              checkAchievements() { //set up event listener for points, only works when jello is clicked. onchange event?
                 
-                if(gameObject.points >= 10){
+                if(gameObject.points >= 1000){
                     this.goal1.style.color = "green";
                 }
-                if(gameObject.storeItemsLeft === 4) {
+                if(gameObject.storeItemsLeft <= 4) {
                     this.goal2.style.color = "green";
                 }
                 if(gameObject.clicks >= 200) {
                   this.goal3.style.color = "green";
                 }
-                if(gameObject.points >= 100) {
+                if(gameObject.points >= 10000) {
                 this.goal4.style.color = "green";
             }
             if(gameObject.storeItemsLeft === 0) {
                 this.goal5.style.color = "green";
             }
-            if(gameObject.points >= 500) {
+            if(gameObject.points >= 50000) {
+                console.log("reached 50k check");
                 this.goal6.style.color = "green";
                 gameObject.jello.style.width = 0; //jello disappears
                 gameObject.jello.style.height = 0;
+                gameObject.keepAddingPoints = false;
                 gameObject.displayPoints.innerHTML = "Congrats, You win!!!"; //displays win message
             }
           }
