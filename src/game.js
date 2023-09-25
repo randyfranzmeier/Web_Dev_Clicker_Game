@@ -22,7 +22,7 @@ const gameObject = {
     observer.observe(gameObject.displayPoints, { //specifying which element should be observed
         childList: true,
         subtree: false,
-        characterDataOldValue: true,    
+        characterDataOldValue: false,    
     });
 
     
@@ -68,7 +68,12 @@ const gameObject = {
         
         
         
-        
+         async function displayWinMessage() {
+             await waitNumSeconds(2000);
+             gameObject.jello.style.visibility = 'hidden'; //jello disappears
+             gameObject.displayPoints.innerHTML = "Congrats, You win!!!"; //displays win message
+             gameObject.points = 0; //reset so user can't buy anything
+        }
         
         let displayUserPoints = () => {
             gameObject.displayPoints.innerHTML = "JPOINTS: " + gameObject.points;
@@ -122,7 +127,6 @@ const gameObject = {
                 });
                 
             
-                //possible idea: have store item dissappear upon purchase so it cannot be re-clicked
                 let jelloStore = (num) => {
                         switch(num) {
                             case 1: 
@@ -251,18 +255,16 @@ const gameObject = {
                   this.goal3.style.color = "green";
                 }
                 if(gameObject.points >= 10000) {
-                this.goal4.style.color = "green";
-            }
-            if(gameObject.storeItemsLeft === 0) {
-                this.goal5.style.color = "green";
-            }
-            if(gameObject.points >= 50000) {
-                console.log("reached 50k check");
-                this.goal6.style.color = "green";
-                gameObject.jello.style.width = 0; //jello disappears
-                gameObject.jello.style.height = 0;
-                gameObject.keepAddingPoints = false;
-                gameObject.displayPoints.innerHTML = "Congrats, You win!!!"; //displays win message
+                  this.goal4.style.color = "green";
+                }
+                if(gameObject.storeItemsLeft === 0) {
+                  this.goal5.style.color = "green";
+                }
+                if(gameObject.points >= 15000) {
+                    observer.disconnect();
+                    gameObject.keepAddingPoints = false;
+                    this.goal6.style.color = "green";
+                    displayWinMessage();
             }
           }
         }

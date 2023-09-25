@@ -6,8 +6,8 @@
    
 }
 
-.rules > h1, .rules > ul > li {
+ .rules > h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-}
+} 
