@@ -3,11 +3,11 @@
     color: black;
     width: 23%;
     background-color: grey;
-   
+
 }
 
- .rules > h1 {
+.rules>h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-} 
+}

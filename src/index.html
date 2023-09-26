@@ -1,76 +1,123 @@
 <!-- This page renders all the elements to one page, and 
      loads all the .js files -->
 <DOCTYPE! html>
-<html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <title>Jello Clicker</title>
-    <link href="styles/page.css" rel="stylesheet">
-    <link href="styles/store.css" rel="stylesheet">
-    <link href="styles/achievements.css" rel="stylesheet">
-    <link href="styles/rules.css" rel="stylesheet">
-</head>
-
-<body class="container">
     
-    <div class="navContainer">
-        <nav><h1>Jello Clicker</h1></nav>
-    </div>
+    <html lang="en">
 
- <div class="container1">
-    <div class="rules">
-        <h1>Game Concept:</h1>
-        <ul>
-            <li><h2>click the jello as many times as possible</h2></li> 
-            <li><h2>Buy power-ups from the jello store to unlock perks</h2></li> 
-            <li><h2>Discover hidden feature to gain extra points</h2></li> 
-            <li><h2>Reach 50,000 JPoints to win!</h2></li>
+    <head>
+        <meta charset="utf-8">
+        <title>Jello Clicker</title>
+        <link href="styles/page.css" rel="stylesheet">
+        <link href="styles/store.css" rel="stylesheet">
+        <link href="styles/achievements.css" rel="stylesheet">
+        <link href="styles/rules.css" rel="stylesheet">
+    </head>
+
+    <body class="container">
+
+        <div class="navContainer">
+            <nav>
+                <h1>Jello Clicker</h1>
+            </nav>
+        </div>
+
+        <div class="container1">
+            <div class="rules">
+                <h1>Game Concept:</h1>
+                <ul>
+                    <li>
+                        <h2>click the jello as many times as possible</h2>
+                    </li>
+                    <li>
+                        <h2>Buy power-ups from the jello store to unlock perks</h2>
+                    </li>
+                    <li>
+                        <h2>Discover hidden feature to gain extra points</h2>
+                    </li>
+                    <li>
+                        <h2>Reach 50,000 JPoints to win!</h2>
+                    </li>
+                </ul>
+                </ul>
+            </div>
+
+            <div class="jelloListener">
+                <h1 id="points">JPOINTS: 0 </h1>
+                <!-- grass background? -->
+                <img id="jello" src="images/jello.png"> <!--onclick="handleClick()" onmousewheel="bonusScrollPoints()" ondragend="penalty()"-->
+            </div>
+
+            <div class="achievements">
+                <h1>Goals to accomplish</h1> <br>
+                <ul>
+                    <li>
+                        <h2 id="goal1">Reach 1,000 points!</h2>
+                    </li>
+                    <li>
+                        <h2 id="goal2">Purchase 4 items from the jello store</h2>
+                    </li>
+                    <li>
+                        <h2 id="goal3">Click the jello 200 times</h2>
+                    </li>
+                    <li>
+                        <h2 id="goal4">Reach 10,000 points</h2>
+                    </li>
+                    <li>
+                        <h2 id="goal5">Clean the jello store out!</h2>
+                    </li>
+                    <li>
+                        <h2 id="goal6">Reach 50,000 points!</h2>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="store">
+            <h1>Jello Store!</h1> <br>
+            <div id="itemCount">Items left: 8</div>
+            <ul class="storeItemContainer">
+                <div class="store-first-half">
+                    <li id="item1">
+                        <h1>More Jello</h1><button id="perk1">50</button>
+                    </li>
+                    <li id="item2">
+                        <h1>2x click's<h1><button id="perk2">200</button>
+                    </li>
+                    <li id="item3">
+                        <h1>Jello party<h1><button id="perk3">1000</button>
+                    </li>
+                    <li id="item4">
+                        <h1>Jello Blast<h1><button id="perk4">2500</button>
+                    </li>
+                </div>
+                <div class="store-second-half">
+                    <li id="item5">
+                        <h1>4x click's</h1><button id="perk5">4000</button>
+                    </li>
+                    <li id="item6">
+                        <h1>Whole-Lotta-Jello</h1><button id="perk6">6000</button>
+                    </li>
+                    <li id="item7">
+                        <h1>Jello frenzy</h1><button id="perk7">8000</button>
+                    </li>
+                    <li id="item8">
+                        <h1>Mega click's</h1><button id="perk8">12000</button>
+                    </li>
+                </div>
             </ul>
-        </ul>
-    </div>
-
-    <div class="jelloListener">
-        <h1 id="points">JPOINTS: 0 </h1> 
-        <!-- grass background? -->
-        <img id="jello" src="images/jello.png" onclick="handleClick()" onmousewheel="bonusScrollPoints()" ondragend="penalty()">
-    </div>
-
-    <div class="achievements">
-        <h1>Goals to accomplish</h1> <br>
-        <ul>
-            <li><h2 id="goal1">Reach 1,000 points!</h2></li>
-            <li><h2 id="goal2">Purchase 4 items from the jello store</h2></li>
-            <li><h2 id="goal3">Click the jello 200 times</h2></li>
-            <li><h2 id="goal4">Reach 10,000 points</h2></li>
-            <li><h2 id="goal5">Clean the jello store out!</h2></li>
-            <li><h2 id="goal6">Reach 50,000 points!</h2></li>
-        </ul>
-    </div>
-</div>
-
-    <div class="store">
-        <h1>Jello Store!</h1> <br>
-        <div id="itemCount">Items left: 8</div>
-        <ul class="storeItemContainer">
-            <div class="store-first-half">
-            <li id="item1"><h1>More Jello</h1><button id="perk1">50</button></li>
-            <li id="item2"><h1>2x click's<h1><button id="perk2">200</button></li>
-            <li id="item3"><h1>Jello party<h1><button id="perk3">1000</button></li>
-            <li id="item4"><h1>Jello Blast<h1><button id="perk4">2500</button></li>
-            </div>
-            <div class="store-second-half">
-            <li id="item5"><h1>4x click's</h1><button id="perk5">4000</button></li>
-            <li id="item6"><h1>Whole-Lotta-Jello</h1><button id="perk6">6000</button></li>
-            <li id="item7"><h1>Jello frenzy</h1><button id="perk7">8000</button></li>
-            <li id="item8"><h1>Mega click's</h1><button id="perk8">12000</button></li>
-            </div>
-        </ul>
-    </div>
+        </div>
 
 
-    <script src="game.js"></script>
-</div>
-</body>
+        <script type="module">
+            import main from "./model/main.js";
+            import achievement from './model/achievement.js';
+            import game from "./model/game.js";
+            import store from './model/store.js';
+            </script>
+        <!-- <script src="./model/achievement.js"></script>
+        <script src="./model/store.js"></script>
+        <script src="./model/game.js"></script> -->
+        </div>
+    </body>
 
-</html>
+    </html>
