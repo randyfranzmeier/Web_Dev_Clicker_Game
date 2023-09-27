@@ -1,6 +1,6 @@
-import {achievements} from './achievement.js'
-import {store} from './store.js';
-import {gameObject} from './game.js';
+import * as achievements from './achievement.js'
+import * as store from './store.js';
+import * as gameObject from './game.js';
 /** this file deals with the main logic for the game
  *  I am only importing this file into the html, and this acts 
  *  as the driver that calls all the other files functions.

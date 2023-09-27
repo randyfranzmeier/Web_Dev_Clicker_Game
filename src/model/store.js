@@ -1,4 +1,4 @@
-import {gameObject} from './game.js';
+import * as gameObject from './game.js';
 
 //store contains functions pertaining to the store section of the page
 export const store = {

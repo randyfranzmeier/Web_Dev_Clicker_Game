@@ -1,17 +1,18 @@
 div.store {
-    display:flex;
+    display: flex;
     flex-direction: column;
     /* border: 3px solid white; */
     margin-top: 2%;
     background-image: url(../images/storebg.jpeg);
     background-repeat: no-repeat;
-    background-size: cover;    
+    background-size: cover;
 }
 
-.store > ul {
+.store>ul {
     list-style-type: none;
 }
-.store > h1 {
+
+.store>h1 {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -20,8 +21,8 @@ div.store {
 
 button {
     border-radius: 95%;
-    background-color:white;
-    width:35%;
+    background-color: white;
+    width: 35%;
     height: 35%;
 }
 
@@ -30,7 +31,7 @@ button:hover {
 }
 
 .storeItemContainer {
-    gap:15%;
+    gap: 15%;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -40,16 +41,15 @@ button:hover {
 .storeFirstHalf {
     flex: 1 1 auto;
 }
+
 .storeSecondHalf {
     flex: 1 1 auto;
 }
 
-.store > #itemCount {
+.store>#itemCount {
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 200%;
     font-weight: bold;
 }
-
-

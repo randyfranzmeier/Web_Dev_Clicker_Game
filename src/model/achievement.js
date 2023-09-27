@@ -1,5 +1,5 @@
-import {gameObject} from './game.js';
-import {observerObject} from './main.js';
+import * as gameObject from './game.js';
+import * as observerObject from './main.js';
 
 //achievements object to contain functions for achievements portion of page
 export const achievements = {
