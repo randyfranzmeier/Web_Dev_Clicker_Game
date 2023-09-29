@@ -1,5 +1,9 @@
 
-/** this file deals with the main logic for the game.
+/** 
+ * Author: Randy Franzmeier
+ * Date: 9-29-23
+ * Class: Web Development 2
+ * this file deals with the main logic for the game.
  *  Notice the use of objects to seperate properties 
  *  and functions.
  *  */
