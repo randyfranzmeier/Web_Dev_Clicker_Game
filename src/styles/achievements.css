@@ -1,12 +1,22 @@
+/*Styles for the achievements portion of the page
+  Author: Randy Franzmeier
+  date: 9-29-23*/
+
+/*specifying the width*/
 div.achievements {
     width: 25%;
-}
+} 
 
+/*displaying content as flex so it is in
+ the same container as the other elements.
+ the background is gray so it won't draw all
+ the attention to it.*/
 .achievements {
     flex: 1 1 auto;
     background-color: grey;
 }
 
+/*centering the title in the container*/
 .achievements>h1 {
     display: flex;
     align-items: center;

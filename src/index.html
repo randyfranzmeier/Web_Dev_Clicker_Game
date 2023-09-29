@@ -13,7 +13,7 @@
         <link href="styles/rules.css" rel="stylesheet">
     </head>
 
-    <body class="container">
+    <body class="container"> <!--Notice the use of containers. This allows me to organize the page better.-->
 
         <div class="navContainer">
             <nav>
@@ -44,7 +44,7 @@
             <div class="jelloListener">
                 <h1 id="points">JPOINTS: 0 </h1>
                 <!-- grass background? -->
-                <img id="jello" src="images/jello.png" onmousewheel="bonusScrollPoints()"> <!--onclick="handleClick()" onmousewheel="bonusScrollPoints()" ondragend="penalty()">-->
+                <img id="jello" src="images/jello.png" onmousewheel="bonusScrollPoints()"> 
             </div>
 
             <div class="achievements">
@@ -76,39 +76,43 @@
             <h1>Jello Store!</h1> <br>
             <div id="itemCount">Items left: 8</div>
             <ul class="storeItemContainer">
-                <div class="store-first-half">
+                <div class="store-first-half">  <!--there are 2 elements per row in the store-->
                     <li id="item1">
-                        <h1>More Jello</h1><button id="perk1">50</button>
+                        <h1>More Jello</h1> <h2>Points: 50</h2><button id="perk1">buy</button>
                     </li>
                     <li id="item2">
-                        <h1>2x click's<h1><button id="perk2">200</button>
-                    </li>
-                    <li id="item3">
-                        <h1>Jello party<h1><button id="perk3">1000</button>
-                    </li>
-                    <li id="item4">
-                        <h1>Jello Blast<h1><button id="perk4">2500</button>
+                        <h1>2x click's<h1><h2>points: 200</h2><button id="perk2">buy</button>
                     </li>
                 </div>
-                <div class="store-second-half">
+                    <div class="store-second-half">
+                    <li id="item3">
+                        <h1>Jello party<h1><h2>points: 1000</h2><button id="perk3">buy</button>
+                    </li>
+                    <li id="item4">
+                        <h1>Jello Blast<h1><h2>points: 2500</h2><button id="perk4">buy</button>
+                    </li>
+                </div>
+                <div class="store-third-half">
                     <li id="item5">
-                        <h1>4x click's</h1><button id="perk5">4000</button>
+                        <h1>4x click's</h1><h2>points: 4000</h2><button id="perk5">buy</button>
                     </li>
                     <li id="item6">
-                        <h1>Whole-Lotta-Jello</h1><button id="perk6">6000</button>
+                        <h1>Jello fever</h1><h2>points: 6000</h2><button id="perk6">buy</button>
                     </li>
+                </div>
+                <div class="store-fourth-half">
                     <li id="item7">
-                        <h1>Jello frenzy</h1><button id="perk7">8000</button>
+                        <h1>Jello frenzy</h1><h2>points: 8000</h2><button id="perk7">buy</button>
                     </li>
                     <li id="item8">
-                        <h1>Mega click's</h1><button id="perk8">12000</button>
+                        <h1>Mega click's</h1><h2>points: 12000</h2><button id="perk8">buy</button>
                     </li>
                 </div>
             </ul>
         </div>
 
 
-        <script src="main.js"></script>
+        <script src="main.js"></script> <!--link to the js after the page renders-->
         </div>
     </body>
 

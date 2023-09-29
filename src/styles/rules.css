@@ -1,3 +1,9 @@
+/* This file deals with styles for the rules portion
+   of the page.
+   Author: Randy Franzmeier
+   Date: 9-29-23*/
+
+   /*This displays the container as flex*/
 .rules {
     flex: 1 1 auto;
     color: black;
@@ -6,6 +12,7 @@
 
 }
 
+/*This simply centers the title*/
 .rules>h1 {
     display: flex;
     justify-content: center;
