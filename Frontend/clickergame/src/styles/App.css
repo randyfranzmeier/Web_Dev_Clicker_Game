@@ -1,0 +1,46 @@
+/*This file deals with styles for the whole page
+Author: Randy Franzmeier
+Date: 9/29/23 */
+html {
+  background-color: black;
+}
+
+/*navbar styles*/
+nav h1 {
+  color: black;
+  background-color: crimson;
+}
+
+.navContainer nav h1 {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+/*display points styles*/
+#points {
+  margin-top: 10%;
+}
+
+/*list styles*/
+ul {
+  list-style-type: disc;
+}
+
+/*container display*/
+
+/*whole page should display flex, with elements spaced evenly*/
+.container {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+/*this top container contains the jello, rules, and achievements.
+It is displaying the items in a row.*/
+.container1 {
+  gap: 2%;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  display: flex;
+  justify-content: space-around;
+}
