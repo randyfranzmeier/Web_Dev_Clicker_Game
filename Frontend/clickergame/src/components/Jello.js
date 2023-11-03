@@ -1,88 +1,58 @@
 import '../styles/Jello.css';
+import { useState, useEffect } from "react";
 import jelloImage from '../images/jello.png';
 
 export default function Jello() {
     
+const [points, setPoints] = useState(0);
+const [isDoubleClick, setIsDoubleClick] = useState(false);
+const [isQuadClick, setIsQuadClick] = useState(false);
+const [isMegaClick, setIsMegaClick] = useState(false);
+const [clicks, setClicks] = useState(0);
+//maybe use clickPoints and continuos points to avoid bugs
 
-let jelloListener = document.getElementById('jello');//variable to set up event listeners for clicks
-
-// /**this observer object call the 
-//  *  @function checkAchievements()
-//  * to check if any of the requirements have been met.
-//   */
-// let observer = new MutationObserver(() => {
-//     achievements.checkAchievements();
-// }
-// );
-
-// /** I am now using the object I created to observe any changes
-//  * to the @param gameObject.displayPoints 
-//  */
-// observer.observe(gameObject.displayPoints, { //specifying which element should be observed
-//     childList: true,
-//     subtree: false, //don't want to observe the descendants of gameObject.displayPoints
-//     characterDataOldValue: false, //don't need to record mutations
-// });
-
-// /**this object simply encapsulates a function 
-//  * that establishes a disconnection from the 
-//  * mutation observer object. We need this 
-//  * because at some point the game will end.
-//  */
-// const observerObject = {
-//     stop() {
-//         observer.disconnect();
-//     }
-// }
-
-
-
-
-// /**I thought it'd be funny if the user got 5 points every time they scroll on the jello */
-// let bonusScrollPoints = () => {
-    //     gameObject.points += 5;
-    //     gameObject.displayUserPoints();
-    // }
+let bonusPoints = () => {
+    setPoints(points + 5);
+    }
     
-    
-    
-    
-    
+    // useEffect(()=>{ //only use useEffect to check if achievements have been met
+    //     setTimeout(()=>{
+    //         setPoints(points + 1);
+    //     }, 100000);
+    //     });
     
     
     
     let handleClick = () => {
-        if (gameObject.isDoubleClick) {
-            if (gameObject.isQuadClick) {
-                if (gameObject.isMegaClick) {
-                    gameObject.points += 50;
+        if (isDoubleClick) {
+            if (isQuadClick) {
+                if (isMegaClick) {
+                    setPoints(points + 50);
                 }
                 else {
-                    gameObject.points += 4;
+                    setPoints(points + 4)
                 }
             }
             else {
-                gameObject.points += 2;
+                 setPoints(points + 2);
             }
         }
         else {
-            gameObject.points += 1;
+            setPoints(points + 1);
         }
-    
-        gameObject.clicks++;
-        gameObject.displayUserPoints();
+        setClicks(clicks + 1);
     }
 
 let penalty = () =>{
-    gameObject.points < 50 ? gameObject.points = 0 : gameObject.points -= 50; //ternary operator
     alert("Don't steal the jello!!! Penalty applied!!!");
-    gameObject.displayUserPoints(); //we need to show them their points after they misbehaved
+    points < 50? setPoints(0): setPoints(points - 50);
+   
 }
 
     return (
         <div className="jelloListener">
-                <h1 id="points">JPOINTS: 0 </h1>
-                <img id="jello" src={jelloImage} alt='jello' onClick={handleClick} onDragEnd={penalty} onScroll={}/>
+                <h1 id="points">JPOINTS: {points} </h1>
+                <img id="jello" src={jelloImage} alt='jello' onClick={handleClick} onDragEnd={penalty} onAuxClick={bonusPoints}/>
             </div>
     );
 }
