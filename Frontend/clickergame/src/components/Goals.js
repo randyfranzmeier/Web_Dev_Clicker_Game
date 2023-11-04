@@ -1,8 +1,10 @@
 import '../styles/Goals.css';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from "react";
+import { JelloContext } from '../JelloContext';
 
 export default function Goals(){
-  
+
+    const {points, setPoints, numClicks, setNumClicks, itemsLeft, setItemsLeft} = useContext(JelloContext);
        
        let goal1 = document.getElementById('goal1');
        let goal2 = document.getElementById('goal2');
@@ -13,29 +15,37 @@ export default function Goals(){
     
         /** Each time the points change, this function is called; it checks if any of the 6 goals have been met. */
         
-    //useEffect(()=>{
-        // if (gameObject.points >= 1000) {
-        //     this.goal1.style.color = "green"; /**notice that the style will change to green, showing the task is complete */
-        // }
-        // if (gameObject.storeItemsLeft <= 4) {
-        //     this.goal2.style.color = "green";
-        // }
-        // if (gameObject.clicks >= 200) {
-        //     this.goal3.style.color = "green";
-        // }
-        // if (gameObject.points >= 10000) {
-        //     this.goal4.style.color = "green";
-        // }
-        // if (gameObject.storeItemsLeft === 0) {
-        //     this.goal5.style.color = "green";
-        // }
-        // if (gameObject.points >= 50000) {  /**Once this criteria is achieved, the game is over.*/
-        //     observerObject.stop(); //stop listening for changes where the points are displayed
-        //     gameObject.keepAddingPoints = false; //stop adding points
-        //     this.goal6.style.color = "green";
-        //     gameObject.displayWinMessage(); //displays special win message to user
-        // }
-   // })
+    useEffect(()=>{
+        if (points >= 10) {
+            goal1.style.color = "green"; /**notice that the style will change to green, showing the task is complete */
+        }
+        if (itemsLeft <= 4) {
+            goal2.style.color = "green";
+        }
+        if (numClicks >= 20) {
+            goal3.style.color = "green";
+        }
+        if (points >= 10000) {
+            goal4.style.color = "green";
+        }
+        if (itemsLeft === 0) {
+            goal5.style.color = "green";
+        }
+        if (points >= 50000) {  /**Once this criteria is achieved, the game is over.*/
+            // observerObject.stop(); //stop listening for changes where the points are displayed
+            // gameObject.keepAddingPoints = false; //stop adding points
+             goal6.style.color = "green";
+            // gameObject.displayWinMessage(); //displays special win message to user
+        }
+   })
+
+
+    // async function displayWinMessage() {
+    //     await this.waitNumSeconds(2000);
+    //     this.jello.style.visibility = 'hidden';
+    //     this.displayPoints.textContent = "Congrats, You win!!!";
+    //     this.points = 0;
+    // }
     
 
     return (

@@ -1,15 +1,13 @@
 import '../styles/Jello.css';
-import { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { JelloContext } from '../JelloContext';
 import jelloImage from '../images/jello.png';
 
 export default function Jello() {
+    //let Jello = useContext(JelloContext);
+    const {points, setPoints, isDoubleClick, setIsDoubleClick, isQuadClick, setIsQuadClick, isMegaClick, setIsMegaClick, 
+        numClicks, setNumClicks, itemsLeft, setItemsLeft} = useContext(JelloContext);
     
-const [points, setPoints] = useState(0);
-const [isDoubleClick, setIsDoubleClick] = useState(false);
-const [isQuadClick, setIsQuadClick] = useState(false);
-const [isMegaClick, setIsMegaClick] = useState(false);
-const [clicks, setClicks] = useState(0);
-//maybe use clickPoints and continuos points to avoid bugs
 
 let bonusPoints = () => {
     setPoints(points + 5);
@@ -22,8 +20,8 @@ let bonusPoints = () => {
     //     });
     
     
-    
     let handleClick = () => {
+        //setPoints(points + 1);
         if (isDoubleClick) {
             if (isQuadClick) {
                 if (isMegaClick) {
@@ -40,7 +38,7 @@ let bonusPoints = () => {
         else {
             setPoints(points + 1);
         }
-        setClicks(clicks + 1);
+        setNumClicks(numClicks + 1);
     }
 
 let penalty = () =>{
