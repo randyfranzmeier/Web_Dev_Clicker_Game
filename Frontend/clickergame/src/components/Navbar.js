@@ -1,7 +1,7 @@
 import '../styles/Navbar.css';
 
 export default function Navbar() {
-    let navTitle = "Jello Clicker";
+    let navTitle = "Jello Clicker V2";
     return (
         <div>
             <nav>
