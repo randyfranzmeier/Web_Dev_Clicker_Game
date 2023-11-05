@@ -4,7 +4,7 @@ import { JelloContext } from '../JelloContext';
 
 export default function Goals(){
 
-    const {points, setPoints, numClicks, setNumClicks, itemsLeft, setItemsLeft} = useContext(JelloContext);
+    const {points, numClicks, itemsLeft, isGameDone, setIsGameDone} = useContext(JelloContext);
        
        let goal1 = document.getElementById('goal1');
        let goal2 = document.getElementById('goal2');
@@ -16,26 +16,24 @@ export default function Goals(){
         /** Each time the points change, this function is called; it checks if any of the 6 goals have been met. */
         
     useEffect(()=>{
-        if (points >= 10) {
+        if (points >= 1000) {
             goal1.style.color = "green"; /**notice that the style will change to green, showing the task is complete */
         }
         if (itemsLeft <= 4) {
             goal2.style.color = "green";
         }
-        if (numClicks >= 20) {
+        if (numClicks >= 200) {
             goal3.style.color = "green";
         }
         if (points >= 10000) {
             goal4.style.color = "green";
         }
         if (itemsLeft === 0) {
-            goal5.style.color = "green";
+            goal5.style.color = "gold";
         }
         if (points >= 50000) {  /**Once this criteria is achieved, the game is over.*/
-            // observerObject.stop(); //stop listening for changes where the points are displayed
-            // gameObject.keepAddingPoints = false; //stop adding points
-             goal6.style.color = "green";
-            // gameObject.displayWinMessage(); //displays special win message to user
+             goal6.style.color = "gold";
+             setIsGameDone(true);
         }
    })
 

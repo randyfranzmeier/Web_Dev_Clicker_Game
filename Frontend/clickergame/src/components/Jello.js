@@ -4,20 +4,22 @@ import { JelloContext } from '../JelloContext';
 import jelloImage from '../images/jello.png';
 
 export default function Jello() {
-    //let Jello = useContext(JelloContext);
+    let jelloPicture = document.getElementById('jello');
+    let displayPoints = document.getElementById('points');
     const {points, setPoints, isDoubleClick, setIsDoubleClick, isQuadClick, setIsQuadClick, isMegaClick, setIsMegaClick, 
-        numClicks, setNumClicks, itemsLeft, setItemsLeft} = useContext(JelloContext);
+        numClicks, setNumClicks, itemsLeft, setItemsLeft, isGameDone, setIsGameDone} = useContext(JelloContext);
     
 
 let bonusPoints = () => {
     setPoints(points + 5);
     }
     
-    // useEffect(()=>{ //only use useEffect to check if achievements have been met
-    //     setTimeout(()=>{
-    //         setPoints(points + 1);
-    //     }, 100000);
-    //     });
+    useEffect(()=>{ //only use useEffect to check if achievements have been met
+        if(isGameDone) {
+            jelloPicture.style.visibility = 'hidden';
+            displayPoints.textContent = "You Finished! Total points:  " + points;
+        }
+        });
     
     
     let handleClick = () => {

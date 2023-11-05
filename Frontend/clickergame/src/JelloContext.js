@@ -6,8 +6,7 @@ export const JelloContext = React.createContext( {
     isMegaClick: false,
     numClicks: 0,
     itemsLeft: 8,
-    keepLooping: false,
-    jelloPerSecond: 0,
+    isGameDone: false,
 } );
 
 //export const JelloContext = React.createContext(Jello);

@@ -10,21 +10,19 @@ import './styles/App.css';
 function App() {
   
     const [points, setPoints] = useState(0);
-    const [keepLooping, setKeepLooping] = useState(false);
     const [isDoubleClick, setIsDoubleClick] = useState(false);
     const [isQuadClick, setIsQuadClick] = useState(false);
     const [isMegaClick, setIsMegaClick] = useState(false);
     const [numClicks, setNumClicks] = useState(0);
     const [itemsLeft, setItemsLeft] = useState(8);
-    const [jelloPerSecond, setJelloPerSecond] = useState(0);
+    const [isGameDone, setIsGameDone] = useState(false);
     //keep looping variable?
     
 
   return (
     <div className="App">
       <JelloContext.Provider value={{points, setPoints, isDoubleClick, setIsDoubleClick, isQuadClick, setIsQuadClick,
-      isMegaClick, setIsMegaClick, numClicks,setNumClicks, itemsLeft, setItemsLeft, keepLooping, setKeepLooping,
-      jelloPerSecond, setJelloPerSecond }}>
+      isMegaClick, setIsMegaClick, numClicks, setNumClicks, itemsLeft, setItemsLeft, isGameDone, setIsGameDone}}>
 
       <header className="App-header">
        <Navbar/>

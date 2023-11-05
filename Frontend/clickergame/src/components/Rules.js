@@ -15,7 +15,12 @@ export default function Rules() {
                         <h2>Discover hidden feature to gain extra points</h2>
                     </li>
                     <li>
-                        <h2>Reach 50,000 JPoints to win!</h2>
+                        <h2>Two ways to win: </h2>
+                        <h3>Purchase all items from the Jello store</h3> 
+                        <h3>Reach 50k points</h3>
+                    </li>
+                    <li>
+                        <h2>Can you beat the high score?</h2>
                     </li>
                 </ul>
             </div>
