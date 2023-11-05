@@ -29,7 +29,7 @@ export default function Store() {
                     setItemsLeft(itemsLeft - 1);
                     let random = Math.floor(Math.random() * 150) + 25;
                     alert("Congrats: you recieved " + random + " bonus points");
-                    setPoints((points + random) - 5);
+                    setPoints((points + random) - 50);
                     
                 }
                 break;
@@ -37,7 +37,7 @@ export default function Store() {
                 if (points >= 200) { //200
                     document.getElementById('item2').style.visibility = 'hidden';
                     setIsDoubleClick(true); // clicks are worth 2 points
-                    setPoints(points - 2);
+                    setPoints(points - 200);
                     setItemsLeft(itemsLeft - 1);
                 }
                 break;
@@ -47,7 +47,7 @@ export default function Store() {
                     setItemsLeft(itemsLeft - 1);
                     let random = Math.floor(Math.random() * 2500) + 250;
                     alert("Congrats: you recieved " + random + " bonus points");
-                    setPoints((points + random) - 10);
+                    setPoints((points + random) - 1000);
                     
                 }
                 break;
@@ -57,7 +57,7 @@ export default function Store() {
                     setItemsLeft(itemsLeft - 1);
                     let random = Math.floor(Math.random() * 4500) + 1000;
                     alert("Congrats: you recieved " + random + " bonus points");
-                    setPoints((points + random) - 25);
+                    setPoints((points + random) - 2500);
                     
                 }
                 break
@@ -65,8 +65,8 @@ export default function Store() {
                 if (points >= 4000) { //4000
                     document.getElementById('item5').style.visibility = 'hidden';
                     setIsQuadClick(true); //clicks are worth 4 points
-                    setPoints(points - 40);
-                    setItemsLeft(itemsLeft - 1);
+                    setPoints(points - 4000);
+                    setItemsLeft(itemsLeft - 4000);
                 }
                 break;
             case 6:
@@ -75,7 +75,7 @@ export default function Store() {
                     setItemsLeft(itemsLeft - 1);
                     let random = Math.floor(Math.random() * 9500) + 2000;
                     alert("Congrats: you recieved " + random + " bonus points");
-                    setPoints((points + random) - 60);
+                    setPoints((points + random) - 6000);
                     
                 }
                 break;
@@ -85,7 +85,7 @@ export default function Store() {
                     setItemsLeft(itemsLeft - 1);
                     let random = Math.floor(Math.random() * 16000) + 5000;
                     alert("Congrats: you recieved " + random + " bonus points");
-                    setPoints((points + random) - 80);
+                    setPoints((points + random) - 8000);
                    
                 }
                 break
@@ -93,7 +93,7 @@ export default function Store() {
                 if (points >= 12000) { //12000
                     document.getElementById('item8').style.visibility = 'hidden';
                     setIsMegaClick(true); //clicks are worth 50 points
-                    setPoints(points - 120);
+                    setPoints(points - 12000);
                     setItemsLeft(itemsLeft - 1);
                 }
                 break;
