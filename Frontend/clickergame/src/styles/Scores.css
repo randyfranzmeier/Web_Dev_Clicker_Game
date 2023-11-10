@@ -1,0 +1,16 @@
+div.leaderBoard {
+    color: white;
+    border: 4px solid white;
+    flex: 1 1 auto; 
+    margin-top: 2%;
+}
+
+#userInitials {
+    color: white;
+    border-radius: 0%;
+    background-color: rgb(67, 66, 62);
+    width: 10%;
+    height: 5%;
+}
+
+/*This changes the color of the button when it is hovered over*/

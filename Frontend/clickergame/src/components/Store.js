@@ -5,18 +5,18 @@ import '../styles/Store.css';
 
 export default function Store() {
 
-    const { points, setPoints, isDoubleClick, setIsDoubleClick, isQuadClick, setIsQuadClick, isMegaClick, setIsMegaClick,
-        numClicks, setNumClicks, itemsLeft, setItemsLeft, isGameDone, setIsGameDone} = useContext(JelloContext);
+    const { points, setPoints, clickRate, setClickRate, numClicks, setNumClicks,
+         itemsLeft, setItemsLeft, isGameDone, setIsGameDone} = useContext(JelloContext);
 
     let displayItemCount = document.getElementById('itemCount');
 
     useEffect(() => { /** this function displays the status of the number of items in the store */
-        if (itemsLeft === 0) {
+        if (itemsLeft === 7) {
             displayItemCount.textContent = "Sold Out!!!"; //This makes it so the user doesn't see an empty page
             displayItemCount.style.color = "red";
             setIsGameDone(true);
         }
-    })
+    })      //////////////////////////////////////////////////////////
 
 
 
@@ -24,7 +24,7 @@ export default function Store() {
         switch (num) {
             /**each if statement validates the button press  */
             case 1:
-                if (points >= 50) { //50
+                if (points >= 50) { 
                     document.getElementById('item1').style.visibility = 'hidden';
                     setItemsLeft(itemsLeft - 1);
                     let random = Math.floor(Math.random() * 150) + 25;
@@ -34,66 +34,81 @@ export default function Store() {
                 }
                 break;
             case 2:
-                if (points >= 200) { //200
+                if (points >= 200) { 
                     document.getElementById('item2').style.visibility = 'hidden';
-                    setIsDoubleClick(true); // clicks are worth 2 points
+                    if(clickRate === 1) {
+                        setClickRate(clickRate + 1); //only change if its at 1.
+                    }
                     setPoints(points - 200);
                     setItemsLeft(itemsLeft - 1);
                 }
                 break;
             case 3:
-                if (points >= 1000) { //1000
+                if (points >= 500) { 
                     document.getElementById('item3').style.visibility = 'hidden';
                     setItemsLeft(itemsLeft - 1);
-                    let random = Math.floor(Math.random() * 2500) + 250;
+                    let random = Math.floor(Math.random() * 1500) + 250;
                     alert("Congrats: you recieved " + random + " bonus points");
-                    setPoints((points + random) - 1000);
+                    setPoints((points + random) - 500);
                     
                 }
                 break;
             case 4:
-                if (points >= 2500) { //2500
+                if (points >= 900) { 
                     document.getElementById('item4').style.visibility = 'hidden';
                     setItemsLeft(itemsLeft - 1);
-                    let random = Math.floor(Math.random() * 4500) + 1000;
+                    let random = Math.floor(Math.random() * 2000) + 600;
                     alert("Congrats: you recieved " + random + " bonus points");
-                    setPoints((points + random) - 2500);
+                    setPoints((points + random) - 900);
                     
                 }
                 break
             case 5:
-                if (points >= 4000) { //4000
+                if (points >= 1200) { 
                     document.getElementById('item5').style.visibility = 'hidden';
-                    setIsQuadClick(true); //clicks are worth 4 points
-                    setPoints(points - 4000);
-                    setItemsLeft(itemsLeft - 4000);
+                    if(clickRate === 1) {
+                        setClickRate(clickRate + 3);
+                    }
+                    if(clickRate === 2) {
+                        setClickRate(clickRate + 2);
+                    }
+                    setPoints(points - 1200);
+                    setItemsLeft(itemsLeft - 1);
                 }
                 break;
             case 6:
-                if (points >= 6000) { //6000
+                if (points >= 1800) { 
                     document.getElementById('item6').style.visibility = 'hidden';
                     setItemsLeft(itemsLeft - 1);
-                    let random = Math.floor(Math.random() * 9500) + 2000;
+                    let random = Math.floor(Math.random() * 3500) + 1500;
                     alert("Congrats: you recieved " + random + " bonus points");
-                    setPoints((points + random) - 6000);
+                    setPoints((points + random) - 1800);
                     
                 }
                 break;
             case 7:
-                if (points >= 8000) { //8000
+                if (points >= 2500) { 
                     document.getElementById('item7').style.visibility = 'hidden';
                     setItemsLeft(itemsLeft - 1);
-                    let random = Math.floor(Math.random() * 16000) + 5000;
+                    let random = Math.floor(Math.random() * 5000) + 2000;
                     alert("Congrats: you recieved " + random + " bonus points");
-                    setPoints((points + random) - 8000);
+                    setPoints((points + random) - 2500);
                    
                 }
                 break
             case 8:
-                if (points >= 12000) { //12000
+                if (points >= 3500) { 
                     document.getElementById('item8').style.visibility = 'hidden';
-                    setIsMegaClick(true); //clicks are worth 50 points
-                    setPoints(points - 12000);
+                    if(clickRate === 1) {
+                        setClickRate(clickRate + 49);
+                    }
+                    if(clickRate === 2) {
+                        setClickRate(clickRate + 48);
+                    }
+                    if(clickRate === 4) {
+                        setClickRate(clickRate + 46);
+                    }
+                    setPoints(points - 3500);
                     setItemsLeft(itemsLeft - 1);
                 }
                 break;
@@ -127,33 +142,33 @@ export default function Store() {
                 <div className="store-second-half">
                     <li id="item3">
                         <h1>Mystery box #2</h1>
-                        <h2>points: 1000</h2><button id="perk3" onClick={() => jelloStore(3)}>buy</button>
+                        <h2>points: 500</h2><button id="perk3" onClick={() => jelloStore(3)}>buy</button>
                     </li>
                     <li id="item4">
                         <h1>Mystery box #3</h1>
-                        <h2>points: 2500</h2><button id="perk4" onClick={() => jelloStore(4)}>buy</button>
+                        <h2>points: 900</h2><button id="perk4" onClick={() => jelloStore(4)}>buy</button>
                     </li>
                 </div>
 
                 <div className="store-third-half">
                     <li id="item5">
                         <h1>4x click's</h1>
-                        <h2>points: 4000</h2><button id="perk5" onClick={() => jelloStore(5)}>buy</button>
+                        <h2>points: 1200</h2><button id="perk5" onClick={() => jelloStore(5)}>buy</button>
                     </li>
                     <li id="item6">
                         <h1>Mystery box #4</h1>
-                        <h2>points: 6000</h2><button id="perk6" onClick={() => jelloStore(6)}>buy</button>
+                        <h2>points: 1800</h2><button id="perk6" onClick={() => jelloStore(6)}>buy</button>
                     </li>
                 </div>
 
                 <div className="store-fourth-half">
                     <li id="item7">
                         <h1>Mega Mystery box</h1>
-                        <h2>points: 8000</h2><button id="perk7" onClick={() => jelloStore(7)}>buy</button>
+                        <h2>points: 2500</h2><button id="perk7" onClick={() => jelloStore(7)}>buy</button>
                     </li>
                     <li id="item8">
                         <h1>Mega click's</h1>
-                        <h2>points: 12000</h2><button id="perk8" onClick={() => jelloStore(8)}>buy</button>
+                        <h2>points: 3500</h2><button id="perk8" onClick={() => jelloStore(8)}>buy</button>
                     </li>
                 </div>
 

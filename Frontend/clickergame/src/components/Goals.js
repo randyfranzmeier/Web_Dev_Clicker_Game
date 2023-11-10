@@ -4,7 +4,7 @@ import { JelloContext } from '../JelloContext';
 
 export default function Goals(){
 
-    const {points, numClicks, itemsLeft, isGameDone, setIsGameDone} = useContext(JelloContext);
+    const {points, numClicks, itemsLeft} = useContext(JelloContext);
        
        let goal1 = document.getElementById('goal1');
        let goal2 = document.getElementById('goal2');
@@ -17,34 +17,30 @@ export default function Goals(){
         
     useEffect(()=>{
         if (points >= 1000) {
+           // setNumAchievements(numAchievements + 1);
             goal1.style.color = "green"; /**notice that the style will change to green, showing the task is complete */
         }
         if (itemsLeft <= 4) {
+            //setNumAchievements(numAchievements + 1);
             goal2.style.color = "green";
         }
         if (numClicks >= 200) {
+            //setNumAchievements(numAchievements + 1);
             goal3.style.color = "green";
         }
         if (points >= 10000) {
+            //setNumAchievements(numAchievements + 1);
             goal4.style.color = "green";
         }
-        if (itemsLeft === 0) {
+        if (itemsLeft === 7) {
+            //setNumAchievements(numAchievements + 1);
             goal5.style.color = "gold";
         }
-        if (points >= 50000) {  /**Once this criteria is achieved, the game is over.*/
-             goal6.style.color = "gold";
-             setIsGameDone(true);
+        if (points >= 20000) {  /**Once this criteria is achieved, the game is over.*/
+            // setNumAchievements(numAchievements + 1);
+             goal6.style.color = "green";
         }
-   })
-
-
-    // async function displayWinMessage() {
-    //     await this.waitNumSeconds(2000);
-    //     this.jello.style.visibility = 'hidden';
-    //     this.displayPoints.textContent = "Congrats, You win!!!";
-    //     this.points = 0;
-    // }
-    
+   })////////////////////////////////////////////
 
     return (
         <div className="achievements">
@@ -66,7 +62,7 @@ export default function Goals(){
                         <h2 id="goal5">Clean the jello store out!</h2>
                     </li>
                     <li>
-                        <h2 id="goal6">Reach 50,000 points!</h2>
+                        <h2 id="goal6">Reach 20,000 points!</h2>
                     </li>
                 </ul>
             </div>

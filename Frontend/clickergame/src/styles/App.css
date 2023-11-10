@@ -44,3 +44,21 @@ It is displaying the items in a row.*/
   display: flex;
   justify-content: space-around;
 }
+
+.container2 {
+  gap: 2%;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  display: flex;
+  justify-content: space-around;
+}
+
+.storeDisplayContainer {
+    flex: 2 2 auto;
+    width: 50%;
+}
+
+.scoresDisplayContainer {
+  flex: 2 2 auto;
+  width: 50%;
+}
