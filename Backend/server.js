@@ -8,6 +8,7 @@ const port = process.env.PORT || 3001
 app.use(cors())
 const fs = require('fs');
 const bodyParser = require('body-parser');
+app.use(bodyParser.json());
 
 app.get('/api/v1/getPlayerScore', (req, res) =>{
     let playerObj = "";
@@ -34,15 +35,17 @@ app.get('/api/v1/getPlayerScore', (req, res) =>{
     });
 });
 
-app.post('/api/v1/addPlayerScore',  async (req, res) =>{
-     fs.readFile("playerData.json", { encoding:'utf-8'}, (error, fileContent) => {
-        if(error) throw error;
-        else { async() =>{
-            console.log("File content before parse: " + fileContent);
-            fileContent = await JSON.parse(fileContent);
-            fileContent.push(JSON.stringify(req.body, null, 2));
+app.post('/api/v1/addPlayerScore', (req, res) =>{
+     fs.readFile("playerData.json", "utf-8", (error, fileContent) => {
+        if(error) {
+            console.log("An error occured: " + error);
+        } 
+        else { 
+            //console.log("File content before parse: " + fileContent.length());
+            fileContent = JSON.parse(fileContent);
+            fileContent.push(req.body);
 
-            fs.writeFile("playerData.json", JSON.stringify(fileContent, null, 2), {encoding: 'utf-8'}, (err) =>{
+            fs.writeFile("playerData.json", JSON.stringify(fileContent, null, 2), "utf-8", (err) =>{
                if(err) {
                    res.status(500).send("Error saving data");
                }
@@ -50,10 +53,10 @@ app.post('/api/v1/addPlayerScore',  async (req, res) =>{
                    res.status(200).send("Tasks saved successfully");
                }
                res.end();
-           })}
+           })
         }});
-// validate, then send req.body to appropriate file
 });
+
 
 //start server
 app.listen(port, () => console.log(`Server listening on port ${port}`));

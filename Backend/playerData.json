@@ -1,16 +1,22 @@
-{
-    "playerData": [
-        {
-          "uInitials": "bob",
-          "score": 95,
-          "numAchievements": 0
-        },
-        {
-            "uInitials": "rrf",
-            "score": 75,
-            "numAchievements": 6
-        }
-
-    ]
-
-}
+[
+  {
+    "uInitials": "bob",
+    "score": 95,
+    "numClicks": 11
+  },
+  {
+    "uInitials": "rrf",
+    "score": 75,
+    "numClicks": 15
+  },
+  {
+    "uInitials": "asd",
+    "score": 144,
+    "numClicks": 10
+  },
+  {
+    "uInitials": "bob",
+    "score": 86,
+    "numClicks": 20
+  }
+]

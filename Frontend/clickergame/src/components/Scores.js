@@ -12,7 +12,7 @@ export default function Scores() {
 
      async function postData () {
         //make sure the game is over
-        if (isGameDone) {
+        if (isGameDone) { //*****error handling for input*****
            let gameStats = {"uInitials": inputRef.current.value,
                             "score": points,
                             "numClicks": numClicks};
@@ -45,7 +45,7 @@ export default function Scores() {
         //console.log(JSON.stringify(data));
         if(data.ok) {
             let temp = await data.json();
-            console.log(temp);
+            console.log("initials: " + temp.uInitials);
             setMyString(temp);
         }
 
