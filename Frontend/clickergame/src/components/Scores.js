@@ -2,17 +2,21 @@
 import '../styles/Scores.css'
 import { useContext, useState, useRef } from 'react';
 import { JelloContext } from '../JelloContext';
+import ScoreList from './ScoreList';
 
 export default function Scores() {
     //document.getElementById('userInput').textContent = "test";
     const { points, numClicks, itemsLeft, isGameDone, setIsGameDone} = useContext(JelloContext);
-    const [myString, setMyString] = useState("");
+    const [errorMsg, setErrorMsg] = useState("");
     let inputRef = useRef(null); 
-
+    const [listOfScores, setListOfScores] = useState([]);
+    let renderScores = document.getElementById("renderScores");
 
      async function postData () {
         //make sure the game is over
         if (isGameDone) { //*****error handling for input*****
+            document.getElementById("inputArea").style.visibility = 'hidden';
+            
            let gameStats = {"uInitials": inputRef.current.value,
                             "score": points,
                             "numClicks": numClicks};
@@ -26,7 +30,7 @@ export default function Scores() {
                     getData(); //on success, display scores to the user
                 }
             }).catch(() => {
-                setMyString("--Unable to save score--");
+                setErrorMsg("--Unable to save score--");
                  })
             }
             
@@ -44,9 +48,25 @@ export default function Scores() {
         }).catch(error => { console.log(error) });
         //console.log(JSON.stringify(data));
         if(data.ok) {
-            let temp = await data.json();
-            console.log("initials: " + temp.uInitials);
-            setMyString(temp);
+            let dataObj = Array.of(await data.json()); 
+            console.log("array created, mapping each element")
+             renderScores.textContent = dataObj.forEach(x => {
+                <ScoreList 
+                uInitials = {x.uInitials}
+                score = {x.score}
+                numClicks = {x.numClicks}
+                />
+                console.log("done mapping, here is the first object:", dataObj[0] );
+            })
+            // setListOfScores(dataObj.map(([key, scores]) =>(
+            //     <ScoreList 
+            //                key = {key}
+            //                uInitials = {scores.uInitials}
+            //                score = {scores.score}
+            //                numClicks = {scores.numClicks}
+            //     /> 
+           // )));
+            
         }
 
     }
@@ -54,9 +74,13 @@ export default function Scores() {
     return (
         <div className="leaderBoard">
             <h1>Leaderboard </h1>
+            <div id="inputArea">
             <h2>Enter your 3 initials </h2> <input id="userInput" type="text" maxLength={3} size={3} ref={inputRef}></input>
             <button type='submit' id="userInitials" onClick={postData}>Enter</button>
-            <h2>{myString}</h2>
+            </div>
+            <h3>{errorMsg}</h3>
+            <div id="renderScores">{listOfScores}</div>
+
         </div>
     )
 }

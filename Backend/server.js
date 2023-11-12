@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 
 app.get('/api/v1/getPlayerScore', (req, res) =>{
     let playerObj = "";
-    //get the data from the file. maybe filter to only show top 5.
+    //get the data from the file.
     fs.readFile("playerData.json", "utf-8", (error, jString) =>{
         if(error) {
             throw error;
@@ -20,7 +20,6 @@ app.get('/api/v1/getPlayerScore', (req, res) =>{
         else{
             try{
                  playerObj = JSON.stringify(jString);
-               // console.log("Value of playerObj: " + playerObj);
             }
             catch(err) {
                 console.error("error dude: " + err);
