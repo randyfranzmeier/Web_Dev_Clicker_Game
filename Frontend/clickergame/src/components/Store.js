@@ -10,7 +10,7 @@ export default function Store() {
     let displayItemCount = document.getElementById('itemCount');
 
     useEffect(() => { /** this function displays the status of the number of items in the store */
-        if (itemsLeft === 0) {
+        if (itemsLeft === 7) {
             displayItemCount.textContent = "Sold Out!!!"; //This makes it so the user doesn't see an empty page
             displayItemCount.style.color = "red";
             setIsGameDone(true);

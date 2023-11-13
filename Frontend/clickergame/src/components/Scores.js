@@ -20,8 +20,9 @@ export default function Scores() {
 
     async function postData() {
         //make sure the game is over
+        console.log(typeof(inputRef.current.value));
 
-        if (isGameDone && dataEntered === false) { //*****error handling for input*****
+        if (isGameDone && dataEntered === false && inputRef.current.value.length === 3) { //*****error handling for input*****
            setDataEntered(true); //only alows user to enter data once per round
        
             let gameStats = {
