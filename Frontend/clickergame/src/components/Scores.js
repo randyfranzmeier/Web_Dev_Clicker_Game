@@ -1,6 +1,6 @@
 //This file renders the players score
 import '../styles/Scores.css'
-import { useContext, useState, useRef } from 'react';
+import { useContext, useState, useRef, useEffect } from 'react';
 import { JelloContext } from '../JelloContext';
 import ScoreList from './ScoreList';
 
@@ -10,7 +10,9 @@ export default function Scores() {
     const [errorMsg, setErrorMsg] = useState("");
     let inputRef = useRef(null); 
     const [listOfScores, setListOfScores] = useState([]);
-    let renderScores = document.getElementById("renderScores");
+    const test = [{uInitials: "rrf", score: 55, numClicks: 13}];
+    //let renderScores = document.getElementById("renderScores");
+    //let scoreList = [];
 
      async function postData () {
         //make sure the game is over
@@ -42,31 +44,21 @@ export default function Scores() {
     async function getData() {
         //call once on load (change to useEffect and empty dependency array?) and once the data is posted
         //get the data
-        const data = await fetch('http://localhost:3001/api/v1/getPlayerScore', {
+        const response = await fetch('http://localhost:3001/api/v1/getPlayerScore', {
             method: "GET", //get data
             headers: {"Content-Type": "application/json"}
         }).catch(error => { console.log(error) });
         //console.log(JSON.stringify(data));
-        if(data.ok) {
-            let dataObj = Array.of(await data.json()); 
-            console.log("array created, mapping each element")
-             renderScores.textContent = dataObj.forEach(x => {
-                <ScoreList 
-                uInitials = {x.uInitials}
-                score = {x.score}
-                numClicks = {x.numClicks}
-                />
-                console.log("done mapping, here is the first object:", dataObj[0] );
-            })
-            // setListOfScores(dataObj.map(([key, scores]) =>(
-            //     <ScoreList 
-            //                key = {key}
-            //                uInitials = {scores.uInitials}
-            //                score = {scores.score}
-            //                numClicks = {scores.numClicks}
-            //     /> 
-           // )));
-            
+        if(response.ok) {
+            let dataObj = await response.json();
+            //console.log("data before conversion to array: ", dataObj);
+            const dataArr = Array.from(dataObj);
+            setListOfScores(dataArr);
+            console.log("list of scores: ", listOfScores);
+            //console.log("copied scoreList: ",scoreList);
+            //console.log("array created, mapping each element", typeof(dataObj));
+            //console.log("dataArr:", dataArr);
+            //console.log("done mapping, here is the first object:", dataArr[0] );            
         }
 
     }
@@ -79,8 +71,20 @@ export default function Scores() {
             <button type='submit' id="userInitials" onClick={postData}>Enter</button>
             </div>
             <h3>{errorMsg}</h3>
-            <div id="renderScores">{listOfScores}</div>
 
+            {/* {test.forEach((obj) => {
+                    <ScoreList 
+                    uInitials = {obj.uInitials}
+                    score = {obj.score}
+                    numClicks = {obj.numClicks} />})
+                } */}
+
+                {test.map(obj => { //or [key, obj]
+                    <ScoreList 
+                    uInitials = {obj.uInitials}
+                    score = {obj.score}
+                    numClicks = {obj.numClicks} />})
+                }           
         </div>
     )
 }

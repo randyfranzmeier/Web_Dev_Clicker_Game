@@ -26,7 +26,7 @@ app.get('/api/v1/getPlayerScore', (req, res) =>{
             }
             finally {
                 if(playerObj.trim() != "") {
-                    res.json(JSON.parse(playerObj));
+                    res.send(JSON.parse(playerObj));
                 }
                 res.end();
             }   
