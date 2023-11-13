@@ -5,13 +5,12 @@ import '../styles/Store.css';
 
 export default function Store() {
 
-    const { points, setPoints, clickRate, setClickRate, numClicks, setNumClicks,
-         itemsLeft, setItemsLeft, isGameDone, setIsGameDone} = useContext(JelloContext);
+    const { points, setPoints, clickRate, setClickRate, itemsLeft, setItemsLeft, setIsGameDone} = useContext(JelloContext);
 
     let displayItemCount = document.getElementById('itemCount');
 
     useEffect(() => { /** this function displays the status of the number of items in the store */
-        if (itemsLeft === 7) {
+        if (itemsLeft === 0) {
             displayItemCount.textContent = "Sold Out!!!"; //This makes it so the user doesn't see an empty page
             displayItemCount.style.color = "red";
             setIsGameDone(true);

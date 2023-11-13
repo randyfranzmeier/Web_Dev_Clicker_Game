@@ -32,7 +32,7 @@ export default function Goals(){
             //setNumAchievements(numAchievements + 1);
             goal4.style.color = "green";
         }
-        if (itemsLeft === 7) {
+        if (itemsLeft === 0) {
             //setNumAchievements(numAchievements + 1);
             goal5.style.color = "gold";
         }

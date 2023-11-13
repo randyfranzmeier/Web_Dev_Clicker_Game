@@ -2,9 +2,10 @@
 import '../styles/ScoreList.css';
 
 export default function ScoreList (props){
+    const spacer = "-----";
     return (
-        <div>
-            <h3 className="displayText">initials: {props.uInitials} score: {props.score} jello clicks: {props.numClicks}</h3>
+        <div className="scoreList">
+            <h3 className="displayText">{props.rank} {spacer} {props.uInitials} {spacer} {props.score} {spacer} {props.numClicks}</h3>
         </div>
     );
 }

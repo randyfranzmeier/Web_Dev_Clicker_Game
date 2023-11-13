@@ -1,6 +1,6 @@
 div.leaderBoard {
     color: white;
-    border: 4px solid white;
+    /* border: 4px solid white; */
     flex: 1 1 auto; 
     margin-top: 2%;
 }
@@ -13,4 +13,13 @@ div.leaderBoard {
     height: 5%;
 }
 
+ .lbContainer, .inputArea, #error, #lbTitle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.inputArea>#prompt {
+    margin-right: 2%;
+}
 /*This changes the color of the button when it is hovered over*/
