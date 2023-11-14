@@ -1,6 +1,13 @@
+/***
+ * Author: Randy Franzmeier
+ * Date: 11-13-2023
+ * This is a simple component that displays the
+ * rules/game concept to the user.
+ */
 import '../styles/Rules.css';
 
 export default function Rules() {
+    //display the rules to the player
     return (
             <div className="rules">
                 <h1>Game Concept:</h1>

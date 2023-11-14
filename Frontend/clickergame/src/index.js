@@ -1,3 +1,10 @@
+/***
+ * Author: Randy Franzmeier
+ * Date: 11-13-2023
+ * This file was created by React 
+ * and renders the parent (App) component
+ * in the index.html file
+ */
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
