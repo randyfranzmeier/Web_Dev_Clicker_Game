@@ -61,22 +61,26 @@ ul>div>li {
 
 /*first 2 store items*/
 .store-first-half {
-    flex: 1 1 auto;
+    flex: 1 1 0px;
+    padding: 5px;
 }
 
 /*second 2 store items*/
 .store-second-half {
-    flex: 1 1 auto;
+    flex: 1 1 0px;
+    padding: 5px;
 }
 
 /*third 2 store items*/
 .store-third-half {
-    flex: 1 1 auto;
+    flex: 1 1 0px;
+    padding: 5px;
 }
 
 /*last 2 store items*/
 .store-fourth-half {
-    flex: 1 1 auto;
+    flex: 1 1 0px;
+    padding: 5px;
     margin-right: 3%;
 }
 

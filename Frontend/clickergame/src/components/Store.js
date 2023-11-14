@@ -144,44 +144,44 @@ export default function Store() {
                 <div className="store-first-half">
                     <li id="item1">
                         <h1>Mystery box #1</h1>
-                        <h2>Points: 50</h2><button id="perk1" onClick={() => jelloStore(1)}>buy</button>
+                        <h2>50 pts</h2><button id="perk1" onClick={() => jelloStore(1)}>buy</button>
                     </li>
                     <li id="item2">
                         <h1>2x click's</h1>
-                        <h2>points: 200</h2><button id="perk2" onClick={() => jelloStore(2)}>buy</button>
+                        <h2>200 pts</h2><button id="perk2" onClick={() => jelloStore(2)}>buy</button>
                     </li>
                 </div>
 
                 <div className="store-second-half">
                     <li id="item3">
                         <h1>Mystery box #2</h1>
-                        <h2>points: 500</h2><button id="perk3" onClick={() => jelloStore(3)}>buy</button>
+                        <h2>500 pts</h2><button id="perk3" onClick={() => jelloStore(3)}>buy</button>
                     </li>
                     <li id="item4">
                         <h1>Mystery box #3</h1>
-                        <h2>points: 900</h2><button id="perk4" onClick={() => jelloStore(4)}>buy</button>
+                        <h2>900 pts</h2><button id="perk4" onClick={() => jelloStore(4)}>buy</button>
                     </li>
                 </div>
 
                 <div className="store-third-half">
                     <li id="item5">
                         <h1>4x click's</h1>
-                        <h2>points: 1200</h2><button id="perk5" onClick={() => jelloStore(5)}>buy</button>
+                        <h2>1200 pts</h2><button id="perk5" onClick={() => jelloStore(5)}>buy</button>
                     </li>
                     <li id="item6">
                         <h1>Mystery box #4</h1>
-                        <h2>points: 1800</h2><button id="perk6" onClick={() => jelloStore(6)}>buy</button>
+                        <h2>1800 pts</h2><button id="perk6" onClick={() => jelloStore(6)}>buy</button>
                     </li>
                 </div>
 
                 <div className="store-fourth-half">
                     <li id="item7">
-                        <h1>Mega Mystery box</h1>
-                        <h2>points: 2500</h2><button id="perk7" onClick={() => jelloStore(7)}>buy</button>
+                        <h1>Mega Mystery</h1>
+                        <h2>2500 pts</h2><button id="perk7" onClick={() => jelloStore(7)}>buy</button>
                     </li>
                     <li id="item8">
                         <h1>Mega click's</h1>
-                        <h2>points: 3500</h2><button id="perk8" onClick={() => jelloStore(8)}>buy</button>
+                        <h2>3500 pts</h2><button id="perk8" onClick={() => jelloStore(8)}>buy</button>
                     </li>
                 </div>
 
