@@ -1,3 +1,19 @@
+### Instructions for playing this game
+1: create a terminal and navigate to \Web_Dev_Clicker_Game\Backend
+2: type 'node server.js
+By this point the backend is all ready assuming the console displays 'Server listening on port 3001'
+3: open a new terminal and navigate to \Web_Dev_Clicker_Game\Frontend\clickergame 
+4: type 'npm start'
+By this point the app is ready to be played!
+
+# Author
+Randy Franzmeier
+
+# project purpose
+The purpose of this project is to get familiar with frontend and backend 
+frameworks, UI styling, and javascript. This is the second version of my 
+assignment for web development 2.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
