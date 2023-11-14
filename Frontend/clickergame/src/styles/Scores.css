@@ -1,0 +1,25 @@
+div.leaderBoard {
+    color: white;
+    /* border: 4px solid white; */
+    flex: 1 1 auto; 
+    margin-top: 2%;
+}
+
+#userInitials {
+    color: white;
+    border-radius: 0%;
+    background-color: rgb(67, 66, 62);
+    width: 10%;
+    height: 5%;
+}
+
+ .lbContainer, .inputArea, #error, #lbTitle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.inputArea>#prompt {
+    margin-right: 2%;
+}
+
