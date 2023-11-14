@@ -14,13 +14,9 @@ export default function Scores() {
     const testObj = { "uInitials": "rrf", "score": 54, "numClicks": 13 };
     let mapKey = 1; //when I map each object in the array
     const [dataEntered, setDataEntered] = useState(false);
-    let userInput = document.getElementById("inputArea");
-    //let renderScores = document.getElementById("renderScores");
-    //let scoreList = [];
 
     async function postData() {
         //make sure the game is over
-        console.log(typeof(inputRef.current.value));
 
         if (isGameDone && dataEntered === false && inputRef.current.value.length === 3) { //*****error handling for input*****
            setDataEntered(true); //only alows user to enter data once per round
