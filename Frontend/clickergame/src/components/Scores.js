@@ -6,7 +6,7 @@
  * This is also the place where the apis are called.
  */
 import '../styles/Scores.css'
-import { useContext, useState, useRef} from 'react'; //react hooks
+import { useContext, useState, useRef } from 'react'; //react hooks
 import { JelloContext } from '../JelloContext'; //need access to context object values
 import ScoreList from './ScoreList.js'; //child component to map data to 
 
@@ -30,8 +30,8 @@ export default function Scores() {
     async function postData() {
         //make sure the game is over
         if (isGameDone && dataEntered === false && inputRef.current.value.length === 3) { //*****error handling for input*****
-           setDataEntered(true); //only alows user to enter data once per round
-       
+            setDataEntered(true); //only alows user to enter data once per round
+
             let gameStats = {
                 "uInitials": inputRef.current.value,
                 "score": points,
@@ -61,7 +61,7 @@ export default function Scores() {
      * list of scores is updated so each value can be mapped
      * and shown on the screen.
      */
-    
+
     async function getData() {
         //get the data
         const response = await fetch('http://localhost:3001/api/v1/getPlayerScore', {
@@ -89,24 +89,33 @@ export default function Scores() {
                 <h1 className="title">Leaderboard </h1>
             </div>
 
-                <div className="inputArea">
-                    <h2 id="prompt">Enter your 3 initials </h2> <input id="userInput" type="text" maxLength={3} size={3} ref={inputRef}></input>
-                    <button type='submit' id="userInitials" onClick={postData}>Enter</button>
-                </div>
+            <div className="inputArea">
+                <h2 id="prompt">Enter your 3 initials </h2> <input id="userInput" type="text" maxLength={3} size={3} ref={inputRef}></input>
+                <button type='submit' id="userInitials" onClick={postData}>Enter</button>
+            </div>
 
-                <div className="displayArea">
+            <div className="displayArea">
                 <h3 id="error">{errorMsg}</h3>
                 <h3 id="lbTitle">{lbTitle}</h3>
-                {listOfScores.map(obj => {
-                    return <ScoreList
-                        rank={mapKey}
-                        key={mapKey++}
-                        uInitials={obj.uInitials}
-                        score={obj.score}
-                        numClicks={obj.numClicks} />
-                })
-                }
-                </div>
+
+                <table className="scoreTable">
+                    {listOfScores.map(obj => {
+                    <tr>
+                        <th>Rank</th>
+                        <th>Initials</th>
+                        <th>Score</th>
+                        <th>Clicks</th>
+                    </tr>
+                        return <ScoreList
+                            rank={mapKey}
+                            key={mapKey++}
+                            uInitials={obj.uInitials}
+                            score={obj.score}
+                            numClicks={obj.numClicks} />
+                    })
+                    }
+                </table>
+            </div>
         </div>
     )
 }

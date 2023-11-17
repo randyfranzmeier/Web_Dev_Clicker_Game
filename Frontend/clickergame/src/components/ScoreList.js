@@ -8,11 +8,15 @@
 import '../styles/ScoreList.css';
 
 export default function ScoreList (props){
-    const spacer = "-----"; //so the items are spaced out
     //return an individual score list
     return (
         <div className="scoreList">
-            <h3 className="displayText">{props.rank} {spacer} {props.uInitials} {spacer} {props.score} {spacer} {props.numClicks}</h3>
+            <tr className="displayText">
+                <td>{props.rank}</td>
+                <td>{props.uInitials}</td>
+                <td>{props.score}</td>
+                <td>{props.numClicks}</td>
+            </tr>
         </div>
     );
 }
