@@ -40,6 +40,7 @@ export default function Scores() {
 
             await fetch('https://randys-clicker-game-backend.vercel.app/api/v1/addPlayerScore', {
                 method: "POST",
+                mode: "no-cors",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(gameStats) //add request body to post request
             }).then(response => {
@@ -66,9 +67,12 @@ export default function Scores() {
         //get the data
         const response = await fetch('https://randys-clicker-game-backend.vercel.app/api/v1/getPlayerScore', {
             method: "GET", //get data
-            mode: "cors",
+            mode: "no-cors",
             headers: { "Content-Type": "application/json" }
-        }).catch(error => { console.log(error) }); //catch any errors that may occur
+        }).catch(error => {
+             console.log(error);
+             setErrorMsg("Error loading scores");
+            }); //catch any errors that may occur
         if (response.ok) {
             let dataObj = await response.json();
             let dataArr = Array.from(dataObj).sort(({ score: x }, { score: y }) => y - x); //sort in descending order
