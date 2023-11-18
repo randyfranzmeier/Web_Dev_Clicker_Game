@@ -13,7 +13,7 @@ div.achievements {
  the attention to it.*/
 div.achievements {
     flex: 1 1 auto;
-    background-color:azure;
+    background-color:rgb(193, 220, 220);
 }
 
 /*centering the title in the container*/
