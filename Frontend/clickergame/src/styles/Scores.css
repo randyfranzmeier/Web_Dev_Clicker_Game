@@ -1,0 +1,55 @@
+div.leaderBoard {
+    color: black;
+    /* border: 4px solid white; */
+    flex: 1 1 auto; 
+    margin-top: 2%;
+    
+}
+
+.title{
+    font-size: 300%;
+}
+
+#userInitials {
+    color: white;
+    border-radius: 0%;
+    background-color: rgb(67, 66, 62);
+    width: 10%;
+    height: 5%;
+}
+
+ .lbContainer, .inputArea, #error, #lbTitle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.inputArea>#prompt {
+    margin-right: 2%;
+}
+
+ td, th{
+    border: 1px solid black; 
+    padding: 2%;
+    margin: 2%;
+    text-align: left;
+    font-size: 200%;
+}
+
+
+tr{
+    border: 3px solid black;
+}
+
+.scoreTable {
+    /* border: 2px solid black; */
+    /* display: flex;
+    justify-content: center;
+} */
+}
+
+.tableContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

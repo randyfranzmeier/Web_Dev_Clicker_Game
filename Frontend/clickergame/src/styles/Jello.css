@@ -1,0 +1,29 @@
+
+#jello {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 75%;
+    height: 75%;
+}
+
+/*this jello container contains the jello and the 
+  point display part, and I am having it display
+  as flex to promote a symmetrical page*/
+.jelloListener {
+    flex: 2 2 auto;
+    justify-content: center;
+    align-items: center;
+    background-image: url(../images/tableCloth.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: 3px solid white;
+}
+
+/*centering the title above the jello*/
+.jelloListener>h1 {
+    background-color: white;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
