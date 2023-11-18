@@ -66,6 +66,7 @@ export default function Scores() {
         //get the data
         const response = await fetch('https://randys-clicker-game-backend.vercel.app/api/v1/getPlayerScore', {
             method: "GET", //get data
+            mode: "cors",
             headers: { "Content-Type": "application/json" }
         }).catch(error => { console.log(error) }); //catch any errors that may occur
         if (response.ok) {
