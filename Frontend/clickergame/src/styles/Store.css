@@ -8,10 +8,12 @@
    and symmetrical*/
    div.store {
     /* display: flex; */
+    color:white;
     flex: 2 2 auto;
     flex-direction: column;
     margin-top: 2%;
-    background-image: url(../images/storebg.jpeg);
+    /* background-image: url(../images/storebg.jpeg); */
+    background-image: url(../images/pat2.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     overflow: auto;
@@ -34,7 +36,7 @@
 
 button {
     border-radius: 95%;
-    background-color: rgb(167, 137, 47);
+    background-color: rgb(100, 158, 233);
     width: 55px;
     height: 55px;
 }
@@ -55,7 +57,7 @@ button:hover {
 
 /*This styles each list element within a div*/
 ul>div>li {
-    border: 1px solid black;
+    border: 2px solid black;
     margin-bottom: 4%;
 }
 

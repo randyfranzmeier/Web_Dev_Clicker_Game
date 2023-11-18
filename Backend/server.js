@@ -45,7 +45,7 @@ app.get('/api/v1/getPlayerScore', (req, res) =>{
             }
             finally {
                 if(playerData.trim() != "") { //if the file's contents are not empty
-                    res.send(JSON.parse(playerObj));
+                    res.send(JSON.parse(playerData));
                 }
                 res.end(); //end response
             }   

@@ -6,16 +6,16 @@
  * This is also the place where the apis are called.
  */
 import '../styles/Scores.css'
-import { useContext, useState, useRef} from 'react'; //react hooks
+import { useContext, useState, useRef, useEffect } from 'react'; //react hooks
 import { JelloContext } from '../JelloContext'; //need access to context object values
-import ScoreList from './ScoreList.js'; //child component to map data to 
+import React from 'react';
 
 export default function Scores() {
     const { points, numClicks, isGameDone } = useContext(JelloContext);//gaining access to context object values
     const [errorMsg, setErrorMsg] = useState(""); //error message string
     let inputRef = useRef(null); //useRef hook to store the input value
     const [listOfScores, setListOfScores] = useState([]); //contains the list of data from the backend
-    const [lbTitle, setLbTitle] = useState(""); //leaderboard title string
+    // const [lbTitle, setLbTitle] = useState(""); //leaderboard title string
     let mapKey = 1; //when I map each object in the array
     const [dataEntered, setDataEntered] = useState(false); //boolean variable to track if the user entered their score
 
@@ -30,8 +30,8 @@ export default function Scores() {
     async function postData() {
         //make sure the game is over
         if (isGameDone && dataEntered === false && inputRef.current.value.length === 3) { //*****error handling for input*****
-           setDataEntered(true); //only alows user to enter data once per round
-       
+            setDataEntered(true); //only alows user to enter data once per round
+
             let gameStats = {
                 "uInitials": inputRef.current.value,
                 "score": points,
@@ -61,7 +61,7 @@ export default function Scores() {
      * list of scores is updated so each value can be mapped
      * and shown on the screen.
      */
-    
+
     async function getData() {
         //get the data
         const response = await fetch('http://localhost:3001/api/v1/getPlayerScore', {
@@ -71,10 +71,21 @@ export default function Scores() {
         if (response.ok) {
             let dataObj = await response.json();
             let dataArr = Array.from(dataObj).sort(({ score: x }, { score: y }) => y - x); //sort in descending order
-            setLbTitle("Rank--Initials--Score--Clicks"); //display title
+            // setLbTitle("Rank--Initials--Score--Clicks"); //display title
             setListOfScores(dataArr); //update list
         }
     }
+
+    /**
+     * this @function useEffect() which is a react hook
+     * calls the @function getData() when the page renders
+     * to show the scores. Note the empty dependency array 
+     * that specifies that this should only be called once.
+     */
+
+    useEffect(() => {
+        getData();
+    }, []);
 
     /**
      *  I'm returning a title, input area, button, and a
@@ -89,24 +100,35 @@ export default function Scores() {
                 <h1 className="title">Leaderboard </h1>
             </div>
 
-                <div className="inputArea">
-                    <h2 id="prompt">Enter your 3 initials </h2> <input id="userInput" type="text" maxLength={3} size={3} ref={inputRef}></input>
-                    <button type='submit' id="userInitials" onClick={postData}>Enter</button>
-                </div>
+            <div className="inputArea">
+                <h2 id="prompt">Enter your 3 initials </h2> <input id="userInput" type="text" maxLength={3} size={3} ref={inputRef}></input>
+                <button type='submit' id="userInitials" onClick={postData}>Enter</button>
+            </div>
 
-                <div className="displayArea">
+            <div className="displayArea">
                 <h3 id="error">{errorMsg}</h3>
-                <h3 id="lbTitle">{lbTitle}</h3>
-                {listOfScores.map(obj => {
-                    return <ScoreList
-                        rank={mapKey}
-                        key={mapKey++}
-                        uInitials={obj.uInitials}
-                        score={obj.score}
-                        numClicks={obj.numClicks} />
-                })
-                }
+                {/* <h3 id="lbTitle">{lbTitle}</h3> */}
+                <div className="tableContainer">
+                    <table className="scoreTable">
+                        <tbody>
+                            <tr>
+                                <th>Rank -</th>
+                                <th>Initials -</th>
+                                <th>Score -</th>
+                                <th>Clicks -</th>
+                            </tr>
+
+
+                            {listOfScores.map(obj => (
+                                <><tr><td>{mapKey++}</td><td>{obj.uInitials}</td><td>{obj.score}</td><td>{obj.numClicks}</td></tr></>
+                            )
+                            )
+                            }
+                        </tbody>
+                    </table>
                 </div>
+            </div>
         </div>
     )
 }
+
