@@ -38,7 +38,7 @@ export default function Scores() {
                 "numClicks": numClicks
             }; //request body
 
-            await fetch('http://localhost:3001/api/v1/addPlayerScore', {
+            await fetch('https://randys-clicker-game-backend.vercel.app/api/v1/addPlayerScore', {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(gameStats) //add request body to post request
@@ -64,7 +64,7 @@ export default function Scores() {
 
     async function getData() {
         //get the data
-        const response = await fetch('http://localhost:3001/api/v1/getPlayerScore', {
+        const response = await fetch('https://randys-clicker-game-backend.vercel.app/api/v1/getPlayerScore', {
             method: "GET", //get data
             headers: { "Content-Type": "application/json" }
         }).catch(error => { console.log(error) }); //catch any errors that may occur
