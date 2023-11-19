@@ -32,7 +32,7 @@ app.use(bodyParser.json()); //neatly parses the body of my requests to prevent e
 app.get('/api/v1/getPlayerScore', (req, res) =>{
     let playerData = ""; //string to store player data in
     //get the data from the file.
-    fs.readFile("./playerData.json", "utf-8", (error, jString) =>{
+    fs.readFile("/playerData.json", "utf-8", (error, jString) =>{
         if(error) {
             throw error; //handle error
         }
@@ -66,7 +66,7 @@ app.get('/api/v1/getPlayerScore', (req, res) =>{
  */
 
 app.post('/api/v1/addPlayerScore', (req, res) =>{
-     fs.readFile("./playerData.json", "utf-8", (error, fileContent) => {
+     fs.readFile("/playerData.json", "utf-8", (error, fileContent) => {
         if(error) {
             console.log("An error occured: " + error); //simply log the error
         } 
@@ -76,7 +76,7 @@ app.post('/api/v1/addPlayerScore', (req, res) =>{
             fileContent = JSON.parse(fileContent);
             fileContent.push(req.body);
 
-            fs.writeFile("./playerData.json", JSON.stringify(fileContent, null, 2), "utf-8", (err) =>{
+            fs.writeFile("/playerData.json", JSON.stringify(fileContent, null, 2), "utf-8", (err) =>{
                if(err) {
                    res.status(500).send("Error saving data"); //handle error
                }
