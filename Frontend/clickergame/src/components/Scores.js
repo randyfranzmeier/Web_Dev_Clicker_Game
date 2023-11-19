@@ -47,8 +47,12 @@ export default function Scores() {
                 if (response.ok) {
                     getData(); //on success, display scores to the user
                 }
+                else {
+                    setErrorMsg("--Unable to save score--"); //elegantly display error message to user
+                }
+                
             }).catch(() => {
-                setErrorMsg("--Unable to save score--"); //elegantly display error message to user
+                setErrorMsg("--Error saving score--");
             })
         }
 

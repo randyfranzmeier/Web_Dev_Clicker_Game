@@ -70,7 +70,7 @@ app.get('/api/v1/getPlayerScore', (req, res) =>{
 app.post('/api/v1/addPlayerScore', (req, res) =>{
      fs.readFile(jsonPath, "utf-8", (error, fileContent) => {
         if(error) {
-            console.log("An error occured: " + error); //simply log the error
+           res.status(500).send("Error reading file") //simply log the error
         } 
         else { 
             //Here I am parsing the file content so I can 
@@ -78,7 +78,7 @@ app.post('/api/v1/addPlayerScore', (req, res) =>{
             fileContent = JSON.parse(fileContent);
             fileContent.push(req.body);
 
-            fs.writeFile(jsonPath, JSON.stringify(fileContent, null, 2), "utf-8", (err) =>{
+            fs.writeFile('playerData.json', JSON.stringify(fileContent, null, 2), "utf-8", (err) =>{
                if(err) {
                    res.status(500).send("Error saving data"); //handle error
                }
