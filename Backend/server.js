@@ -8,6 +8,7 @@
  * @function app.post()
  * the @function app.listen() starts the server.
  */
+const path = require('path');
 const express = require('express');//importing express framework for smoothe api creation
 const app = express(); //express object
 app.use(express.static('./src'));
@@ -19,6 +20,7 @@ const fs = require('fs'); //file system object for read and write operations
 const bodyParser = require('body-parser'); 
 app.use(bodyParser.json()); //neatly parses the body of my requests to prevent errors
 
+const jsonPath = path.join(__dirname, 'playerData.json'); //path to the json file
 
 /**this api endpoint takes 
  * two parameters @param req (data from the client) and
@@ -32,7 +34,7 @@ app.use(bodyParser.json()); //neatly parses the body of my requests to prevent e
 app.get('/api/v1/getPlayerScore', (req, res) =>{
     let playerData = ""; //string to store player data in
     //get the data from the file.
-    fs.readFile("playerData.json", "utf-8", (error, jString) =>{
+    fs.readFile(jsonPath, "utf-8", (error, jString) =>{
         if(error) {
             res.status(500).send("error reading file"); //handle error
         }
@@ -66,7 +68,7 @@ app.get('/api/v1/getPlayerScore', (req, res) =>{
  */
 
 app.post('/api/v1/addPlayerScore', (req, res) =>{
-     fs.readFile("playerData.json", "utf-8", (error, fileContent) => {
+     fs.readFile(jsonPath, "utf-8", (error, fileContent) => {
         if(error) {
             console.log("An error occured: " + error); //simply log the error
         } 
@@ -76,7 +78,7 @@ app.post('/api/v1/addPlayerScore', (req, res) =>{
             fileContent = JSON.parse(fileContent);
             fileContent.push(req.body);
 
-            fs.writeFile("playerData.json", JSON.stringify(fileContent, null, 2), "utf-8", (err) =>{
+            fs.writeFile(jsonPath, JSON.stringify(fileContent, null, 2), "utf-8", (err) =>{
                if(err) {
                    res.status(500).send("Error saving data"); //handle error
                }
