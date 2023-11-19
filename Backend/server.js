@@ -14,7 +14,7 @@ app.use(express.static('./src'));
 app.use(express.json());
 const cors = require('cors'); //cross origin resource sharing (cors) so my frontent is compatible with my backend
 const port = process.env.PORT || 3001;//port
-app.use(cors({origin:'*'})); //using cors module
+app.use(cors()); //using cors module
 const fs = require('fs'); //file system object for read and write operations
 const bodyParser = require('body-parser'); 
 app.use(bodyParser.json()); //neatly parses the body of my requests to prevent errors
