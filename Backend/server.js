@@ -44,7 +44,7 @@ app.get('/api/v1/getPlayerScore', (req, res) =>{
                  playerData = JSON.stringify(jString);
             }
             catch(err) { //if contents are empty/non-stringifyable
-                console.error("error dude: " + err);
+                res.status(500).send(err);
             }
             finally {
                 if(playerData.trim() != "") { //if the file's contents are not empty
