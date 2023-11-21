@@ -78,9 +78,9 @@ app.post('/api/v1/addPlayerScore', (req, res) =>{
             fileContent = JSON.parse(fileContent);
             fileContent.push(req.body);
 
-            fs.writeFile('playerData.json', JSON.stringify(fileContent, null, 2), "utf-8", (err) =>{
+            fs.writeFileSync(jsonPath, JSON.stringify(fileContent, null, 2), "utf-8", (err) =>{
                if(err) {
-                   res.send("Error saving data!"); //handle error
+                   res.status(500).send(err); //handle error
                }
                else {
                    res.status(200).send("Tasks saved successfully"); //task is implemented successfully
