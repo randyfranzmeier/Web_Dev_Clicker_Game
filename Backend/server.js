@@ -87,8 +87,8 @@ app.post('/api/v1/addPlayerScore', (req, res) =>{
                    res.status(200).send("Tasks saved successfully"); //task is implemented successfully
                }
             })
+            res.end();//end response
         }});
-        res.end();//end response
 });
 
 /**
