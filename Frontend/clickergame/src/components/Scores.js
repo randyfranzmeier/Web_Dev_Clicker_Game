@@ -68,9 +68,9 @@ export default function Scores() {
      */
 
     async function getData() {
-        //get the data
+        //get the data   https://localhost:3001/api/v1/
         const response = await fetch('https://randys-clicker-game-backend.vercel.app/api/v1/getPlayerScore', {
-            method: "GET", //get data
+            method: "GET", //get data 
             mode: "cors",
             headers: { "Content-Type": "application/json" }
         }).catch(error => {
@@ -140,4 +140,3 @@ export default function Scores() {
         </div>
     )
 }
-
