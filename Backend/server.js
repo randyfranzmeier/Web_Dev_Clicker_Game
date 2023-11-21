@@ -78,7 +78,7 @@ app.post('/api/v1/addPlayerScore', (req, res) =>{
             fileContent = JSON.parse(fileContent);
             fileContent.push(req.body);
 
-            fs.writeFile(jsonPath, JSON.stringify(fileContent, null, 2), "utf-8", (err) =>{
+            fs.writeFile('playerData.json', JSON.stringify(fileContent, null, 2), "utf-8", (err) =>{
                if(err) {
                    res.status(404).send("Error saving data",err); //handle error
                }
