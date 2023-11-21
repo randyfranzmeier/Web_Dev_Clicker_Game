@@ -14,11 +14,12 @@ const app = express(); //express object
 app.use(express.static('./src'));
 app.use(express.json());
 const cors = require('cors'); //cross origin resource sharing (cors) so my frontent is compatible with my backend
-const port = process.env.PORT || 3001;//port
+//const port = process.env.PORT || 3001;//port
 app.use(cors()); //using cors module
 const fs = require('fs'); //file system object for read and write operations
 const bodyParser = require('body-parser'); 
 app.use(bodyParser.json()); //neatly parses the body of my requests to prevent errors
+const serverless = require('serverless-http'); //for serverless functions
 
 const jsonPath = path.join(__dirname, 'playerData.json'); //path to the json file
 
@@ -78,7 +79,7 @@ app.post('/api/v1/addPlayerScore', (req, res) =>{
             fileContent = JSON.parse(fileContent);
             fileContent.push(req.body);
 
-            fs.writeFileSync(jsonPath, JSON.stringify(fileContent, null, 2), "utf-8", (err) =>{
+            fs.writeFile(jsonPath, JSON.stringify(fileContent, null, 2), "utf-8", (err) =>{
                if(err) {
                    res.status(500).send(err); //handle error
                }
@@ -90,10 +91,11 @@ app.post('/api/v1/addPlayerScore', (req, res) =>{
         }});
 });
 
-
+//this is a serverless function wrapper
+module.exports.handler = serverless(app);
 /**
  * this @function app.listen() takes one parameter: the port
  * to listen on. It is generally good practice to log if the server
  * is running and on which port it is running on
  */
-app.listen(port, () => console.log(`Server listening on port ${port}`));
+//app.listen(`server listening on port ${port}`);
