@@ -73,10 +73,10 @@ app.post('/api/v1/addPlayerScore', (req, res) =>{
            res.status(500).send("Error reading file") //can't read file content
         } 
 
-        else { async () =>{
+        else { 
             //Here I am parsing the file content so I can 
             //add the new request body to the file
-            fileContent = await JSON.parse(fileContent);
+            fileContent = JSON.parse(fileContent);
             fileContent.push(req.body);
 
             fs.writeFile(jsonPath, JSON.stringify(fileContent, null, 2), "utf-8", (err) =>{
@@ -86,10 +86,9 @@ app.post('/api/v1/addPlayerScore', (req, res) =>{
                else {
                    res.status(200).send("Tasks saved successfully"); //task is implemented successfully
                }
-               res.end();//end response
-           })
-        }
+            })
         }});
+        res.end();//end response
 });
 
 /**
