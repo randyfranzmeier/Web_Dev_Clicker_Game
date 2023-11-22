@@ -68,7 +68,7 @@ app.get('/api/v1/getPlayerScore', (req, res) =>{
  */
 
 app.post('/api/v1/addPlayerScore', (req, res) =>{
-    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader({'Access-Control-Allow-Origin': '*'}); 
      fs.readFile(jsonPath, "utf-8", (error, fileContent) => {
         if(error) {
            res.status(500).send("Error reading file") //can't read file content
