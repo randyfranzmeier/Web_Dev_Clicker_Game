@@ -71,7 +71,7 @@ app.post('/api/v1/addPlayerScore', (req, res) =>{
     res.header('Access-Control-Allow-Origin', '*'); 
      fs.readFile(jsonPath, "utf-8", (error, fileContent) => {
         if(error) {
-           res.status(500).send("Error reading file") //can't read file content
+           res.status(500).send("Error reading file"); //can't read file content
         } 
 
         else { 
@@ -87,8 +87,8 @@ app.post('/api/v1/addPlayerScore', (req, res) =>{
                else {
                    res.status(200).send("Tasks saved successfully"); //task is implemented successfully
                }
+               res.end();//end response
             })
-            res.end();//end response
         }});
 });
 
